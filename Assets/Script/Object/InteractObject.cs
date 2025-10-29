@@ -9,12 +9,24 @@ public enum ObjectElement {Fire, Water, None}
 public class InteractObject : MonoBehaviour
 {
     [SerializeField] private ObjectType Type;
-    [SerializeField] private ObjectElement element;
+    [SerializeField] private ObjectElement Element;
 
-    [SerializeField] private bool isInteractable;
+    [SerializeField] protected bool IsInteractable;
 
-    protected virtual void Interact()
+    [SerializeField] protected int InteractPlayerNum;
+
+    public virtual void Interact()
     {
 
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        InteractPlayerNum++;
+    }
+
+    void OriggerExit2D(Collider2D collision)
+    {
+        InteractPlayerNum--;        
     }
 }

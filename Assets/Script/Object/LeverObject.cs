@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeverObject : MonoBehaviour
+public class LeverObject : InteractObject
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool isOn = false;
+    private PlayerController nearbyPlayer;
+    private void Update()
     {
-        
+        if (nearbyPlayer != null && Input.GetKeyDown(nearbyPlayer.interactKey))
+        {
+            ToggleLever();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetPlayerInRange(PlayerController player)
     {
-        
+        nearbyPlayer = player;
+    }
+
+    private void ToggleLever()
+    {
+        isOn = !isOn;
+        Debug.Log("Lever " + (isOn ? "On" : "Off"));
+        // �̰����� �� ����, ��/�� ���� �� ���� ����
+    }
+
+    public override void Interact()
+    {
+        base.Interact();
+
     }
 }
