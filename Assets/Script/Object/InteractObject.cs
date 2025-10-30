@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public enum ObjectType { Buton, Leber, Pool, Gate, Box, Slide}
 
@@ -15,7 +16,22 @@ public class InteractObject : MonoBehaviour
 
     [SerializeField] protected int InteractPlayerNum;
 
+    [SerializeField] protected GameObject targetSlide;
+
+    void Awake()
+    {
+        if(targetSlide == null)
+        {
+            Debug.LogError($"{name} has no target slide!");
+        }
+    }
+
     public virtual void Interact()
+    {
+
+    }
+
+    public virtual void InteractOut()
     {
 
     }
@@ -23,10 +39,16 @@ public class InteractObject : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         InteractPlayerNum++;
+        Debug.Log($"{this.name} nearby {InteractPlayerNum}OB");
+        Interact(); //test call
     }
 
-    void OriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        InteractPlayerNum--;        
+        InteractPlayerNum--;
+        if(InteractPlayerNum <= 0)
+        {
+            InteractOut();  //test call
+        }  
     }
 }

@@ -24,7 +24,13 @@ public class ButtonObject : InteractObject
         {
             // action
             isPressed = true;
+            if(targetSlide != null)
+            {
+                targetSlide.GetComponent<SlideObject>().ActiveSlide();
+            }
+
             // +animation
+            sr.sprite = pressedSprite;
         }
         else
         {
@@ -33,12 +39,17 @@ public class ButtonObject : InteractObject
 
     }
 
-    public void InterectOut()
+    public override void InteractOut()
     {
         // when no player interactable 
         if(InteractPlayerNum < 1)
         {
             isPressed = false;
+            sr.sprite = releasedSprite;
+            if(targetSlide != null)
+            {
+                targetSlide.GetComponent<SlideObject>().DeactiveSlide();
+            }
         }
     }
 
