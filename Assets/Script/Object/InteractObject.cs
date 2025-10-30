@@ -54,10 +54,40 @@ public class InteractObject : MonoBehaviour
         {
             //InteractOut();  //test call
         }
-        
-        if(Type == ObjectType.Gate)
+
+        if (Type == ObjectType.Gate)
         {
             InteractOut();
+        }
+    }
+    
+    protected bool PlayerCheck(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player_Fire"))
+        {
+            if (Element == ObjectElement.Fire)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (collision.gameObject.CompareTag("Player_Water"))
+        {
+            if (Element == ObjectElement.Water)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 }
