@@ -1,0 +1,7 @@
+# 기본적으로 모든 파일을 언어 분석에서 제외
+* linguist-vendored
+
+# C# 파일만 분석 대상으로 포함
+*.cs linguist-vendored=false
+*.cs text working-tree-encoding=UTF-8 eol=lf
+#한글 안깨지게 해줌
