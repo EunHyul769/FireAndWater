@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 29b1ea84da6a5764c9da43d4666092ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c792c9911a31d874fbcfbfbd58631a83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
   IsInteractable: 0
   InteractPlayerNum: 0
   targetSlide: {fileID: 0}
-  pressedSprite: {fileID: 21300000, guid: eaef35d8c09366d40bf5e4c5885ac534, type: 3}
-  releasedSprite: {fileID: 21300000, guid: 29b1ea84da6a5764c9da43d4666092ca, type: 3}
+  pressedSprite: {fileID: 21300000, guid: c781f712a9e0df1478dc1dd7e1421569, type: 3}
+  releasedSprite: {fileID: 21300000, guid: c792c9911a31d874fbcfbfbd58631a83, type: 3}
 --- !u!212 &7334656823508254037
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 29b1ea84da6a5764c9da43d4666092ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c792c9911a31d874fbcfbfbd58631a83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
