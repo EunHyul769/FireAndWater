@@ -4,15 +4,78 @@ using UnityEngine;
 
 public class GoalObject : InteractObject
 {
+
+    private SpriteRenderer sr;
+    [SerializeField] private SpriteRenderer srUp;
+    public Sprite[] pressedSprite;
+    public Sprite[] releasedSprite;
+    public bool isOpen = false;
+
+    void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
     public override void Interact()
     {
         base.Interact();
-        // 플레이어 충돌 시 속성에 맞는 문이 열리도록
     }
 
     public override void InteractOut()
     {
         base.InteractOut();
-        //플레이어 충돌 끝 문 닫힘 
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (PlayerCheck(collision))
+        {
+            //상호작용 실행
+            //Interact();
+            sr.sprite = pressedSprite[0];
+            srUp.sprite = pressedSprite[1];
+            isOpen = true;
+        }
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (PlayerCheck(collision))
+        {
+            // 문 닫기
+            //InteractOut();
+            sr.sprite = releasedSprite[0];
+            srUp.sprite = releasedSprite[1];
+            isOpen = false;
+        }
+    }
+    
+    private bool PlayerCheck(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player_Fire"))
+        {
+            if (Element == ObjectElement.Fire)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (collision.gameObject.CompareTag("Player_Water"))
+        {
+            if (Element == ObjectElement.Water)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
 }
