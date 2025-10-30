@@ -6,7 +6,7 @@ using TMPro;
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance; // 싱글톤
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI TimerText;
 
     private float elapsedTime = 0f;
     private bool isRunning = false;
@@ -36,7 +36,7 @@ public class TimeManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(elapsedTime % 60);
         int milliseconds = Mathf.FloorToInt((elapsedTime * 100) % 100);
 
-        timerText.text = $"{minutes:00}:{seconds:00}.{milliseconds:00}";
+        TimerText.text = $"{minutes:00}:{seconds:00}.{milliseconds:00}";
     }
 
     public void StartTimer()
