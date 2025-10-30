@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public enum ObjectType { Buton, Lever, Pool, Gate, Box, Slide}
+public enum ObjectType { Buton, Lever, Pool, Gate, Box, Slide, Gem}
 
 public enum ObjectElement {Fire, Water, None}
 
