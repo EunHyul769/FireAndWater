@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8944578529146306564}
   - component: {fileID: 2877877205310793836}
   - component: {fileID: 7050872667896073546}
+  - component: {fileID: 3060672386946847619}
   - component: {fileID: 3679943650760866374}
   - component: {fileID: 9052569645584727106}
+  - component: {fileID: 5858719931956197449}
   m_Layer: 6
   m_Name: Player_Water
   m_TagString: Player_Water
@@ -34,6 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2612647573069772870}
+  - {fileID: 2666140713480929667}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2877877205310793836
@@ -108,12 +111,24 @@ MonoBehaviour:
   downKey: 274
   jumpKey: 273
   interactKey: 256
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 2666140713480929667}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
   heldKey: {fileID: 0}
   keyHoldPosition: {fileID: 2612647573069772870}
+--- !u!114 &3060672386946847619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956643917170393810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880c26eaffcedd6499495de85a972eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &3679943650760866374
 Rigidbody2D:
   serializedVersion: 4
@@ -140,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &9052569645584727106
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,6 +191,58 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.8, y: 1}
   m_Direction: 0
+--- !u!95 &5858719931956197449
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956643917170393810}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4168c9b71312b784d9f652c376f0f446, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6425271034118158619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2666140713480929667}
+  m_Layer: 6
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2666140713480929667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425271034118158619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8944578529146306564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8100048811085655867
 GameObject:
   m_ObjectHideFlags: 0
