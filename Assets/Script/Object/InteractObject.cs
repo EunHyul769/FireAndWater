@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public enum ObjectType { Buton, Lever, Pool, Gate, Box, Slide}
+public enum ObjectType { Buton, Lever, Pool, Gate, Box, Slide, Gem}
 
 public enum ObjectElement {Fire, Water, None}
 
 public class InteractObject : MonoBehaviour
 {
-    [SerializeField] private ObjectType Type;
-    [SerializeField] private ObjectElement Element;
+    [SerializeField] protected ObjectType Type;
+    [SerializeField] protected ObjectElement Element;
 
     [SerializeField] protected bool IsInteractable;
 
@@ -36,19 +36,28 @@ public class InteractObject : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         InteractPlayerNum++;
         Debug.Log($"{this.name} nearby {InteractPlayerNum}OB");
         //Interact(); //test call
+        if(Type == ObjectType.Gate)
+        {
+            Interact();
+        }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         InteractPlayerNum--;
-        if(InteractPlayerNum <= 0)
+        if (InteractPlayerNum <= 0)
         {
             //InteractOut();  //test call
-        }  
+        }
+        
+        if(Type == ObjectType.Gate)
+        {
+            InteractOut();
+        }
     }
 }
