@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\github\\test\\FireAndWater\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{44605C2B-3B00-3A13-4336-18E8D66973CD}|Assembly-CSharp.csproj|d:\\github\\test\\fireandwater\\assets\\script\\stageclearscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44605C2B-3B00-3A13-4336-18E8D66973CD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\stageclearscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{44605C2B-3B00-3A13-4336-18E8D66973CD}|Assembly-CSharp.csproj|d:\\github\\test\\fireandwater\\assets\\script\\scenecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44605C2B-3B00-3A13-4336-18E8D66973CD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\scenecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,19 +43,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "StageClearScene.cs",
+              "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\StageClearScene.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\StageClearScene.cs",
+              "ToolTip": "D:\\github\\test\\FireAndWater\\Assets\\Script\\StageClearScene.cs",
+              "RelativeToolTip": "Assets\\Script\\StageClearScene.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T02:08:05.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SceneController.cs",
               "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\SceneController.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\SceneController.cs",
               "ToolTip": "D:\\github\\test\\FireAndWater\\Assets\\Script\\SceneController.cs",
               "RelativeToolTip": "Assets\\Script\\SceneController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-30T02:06:21.597Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\GameManager.cs",
@@ -59,12 +76,11 @@
               "RelativeToolTip": "Assets\\Script\\GameManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T02:03:38.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-30T02:03:38.689Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TimeManager.cs",
               "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\TimeManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\TimeManager.cs",
@@ -76,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Lever.cs",
               "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\Lever.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Lever.cs",
@@ -88,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ButtonTrigger.cs",
               "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\ButtonTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\ButtonTrigger.cs",
@@ -100,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\PlayerController.cs",

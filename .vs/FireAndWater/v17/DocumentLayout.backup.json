@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\github\\test\\FireAndWater\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|d:\\github\\test\\fireandwater\\assets\\script\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\script\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44605C2B-3B00-3A13-4336-18E8D66973CD}|Assembly-CSharp.csproj|d:\\github\\test\\fireandwater\\assets\\script\\scenecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44605C2B-3B00-3A13-4336-18E8D66973CD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\scenecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44605C2B-3B00-3A13-4336-18E8D66973CD}|Assembly-CSharp.csproj|D:\\github\\test\\FireAndWater\\assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,14 +39,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SceneManager.cs",
-              "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\SceneManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\SceneManager.cs",
-              "ToolTip": "D:\\github\\test\\FireAndWater\\Assets\\Script\\SceneManager.cs",
-              "RelativeToolTip": "Assets\\Script\\SceneManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAeAAAAAAAAAA==",
+              "Title": "SceneController.cs",
+              "DocumentMoniker": "D:\\github\\test\\FireAndWater\\Assets\\Script\\SceneController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SceneController.cs",
+              "ToolTip": "D:\\github\\test\\FireAndWater\\Assets\\Script\\SceneController.cs",
+              "RelativeToolTip": "Assets\\Script\\SceneController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T02:04:28.997Z",
+              "WhenOpened": "2025-10-30T02:06:21.597Z",
               "EditorCaption": ""
             },
             {
@@ -59,7 +59,8 @@
               "RelativeToolTip": "Assets\\Script\\GameManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T02:03:38.689Z"
+              "WhenOpened": "2025-10-30T02:03:38.689Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
