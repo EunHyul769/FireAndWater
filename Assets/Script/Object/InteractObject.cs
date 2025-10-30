@@ -22,7 +22,7 @@ public class InteractObject : MonoBehaviour
     {
         if(targetSlide == null)
         {
-            Debug.LogError($"{name} has no target slide!");
+            Debug.Log($"{name} has no target slide!");
         }
     }
 
