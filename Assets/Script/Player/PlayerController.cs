@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour
     public string playerType = "Fire"; // "Fire" or "Water"
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
-    public KeyCode leftKey = KeyCode.A;
-    public KeyCode rightKey = KeyCode.D;
-    public KeyCode downKey = KeyCode.S;
-    public KeyCode jumpKey = KeyCode.W;
+    public KeyCode leftKey;
+    public KeyCode rightKey;
+    public KeyCode downKey;
+    public KeyCode jumpKey;
     public KeyCode interactKey = KeyCode.E;
 
     [Header("Ground Check")]
@@ -24,12 +24,16 @@ public class PlayerController : MonoBehaviour
 
     // Key system
     [HideInInspector] public KeyItem heldKey = null;
-    public Transform keyHoldPosition;  // 플레이어 머리 위에 빈 오브젝트 (열쇠가 따라다님)
+    public Transform keyHoldPosition;
     private PlayerController otherPlayer;
+
+    // Animation Handler 추가
+    private AnimationHandler animationHandler;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animationHandler = GetComponentInChildren<AnimationHandler>(); // Animator 제어 담당
     }
 
     private void Start()
@@ -52,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             heldKey.transform.position = keyHoldPosition.position;
 
-            // 내려놓기
+            // ⬇내려놓기
             if (Input.GetKeyDown(downKey))
             {
                 DropKey();
@@ -73,15 +77,34 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(rightKey)) moveDir = 1;
 
         rb.velocity = new Vector2(moveDir * moveSpeed, rb.velocity.y);
+
+        // 이동 애니메이션 적용
+        if (animationHandler != null)
+        {
+            animationHandler.Move(rb.velocity);
+        }
     }
 
     private void Jump()
     {
+        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
+        // 땅 위에서 점프 키를 눌렀을 때 점프
         if (isGrounded && Input.GetKeyDown(jumpKey))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            // 점프 애니메이션 시작
+            if (animationHandler != null)
+                animationHandler.Jump(rb.velocity);
+        }
+
+        // 착지했을 때 점프 애니메이션 해제
+        if (!wasGrounded && isGrounded)
+        {
+            if (animationHandler != null)
+                animationHandler.JumpEnd();
         }
     }
 
