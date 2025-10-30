@@ -1,5 +1,6 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,27 +9,61 @@ public class PlayerController : MonoBehaviour
     public string playerType = "Fire"; // "Fire" or "Water"
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
-    public KeyCode leftKey;
-    public KeyCode rightKey;
-    public KeyCode jumpKey;
+    public KeyCode leftKey = KeyCode.A;
+    public KeyCode rightKey = KeyCode.D;
+    public KeyCode downKey = KeyCode.S;
+    public KeyCode jumpKey = KeyCode.W;
     public KeyCode interactKey = KeyCode.E;
-
-    private Rigidbody2D rb;
-    private bool isGrounded = false;
 
     [Header("Ground Check")]
     public Transform groundCheck;
     public LayerMask groundLayer;
+
+    private Rigidbody2D rb;
+    private bool isGrounded = false;
+
+    // Key system
+    [HideInInspector] public KeyItem heldKey = null;
+    public Transform keyHoldPosition;  // í”Œë ˆì´ì–´ ë¨¸ë¦¬ ìœ„ì— ë¹ˆ ì˜¤ë¸Œì íŠ¸ (ì—´ì‡ ê°€ ë”°ë¼ë‹¤ë‹˜)
+    private PlayerController otherPlayer;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        // ì”¬ì—ì„œ ë‹¤ë¥¸ í”Œë ˆì´ì–´ ì°¾ê¸°
+        foreach (PlayerController p in FindObjectsOfType<PlayerController>())
+        {
+            if (p != this)
+                otherPlayer = p;
+        }
+    }
+
     private void Update()
     {
         Move();
         Jump();
+
+        // í‚¤ ë“¤ê³  ìˆì„ ë•Œ
+        if (heldKey != null)
+        {
+            heldKey.transform.position = keyHoldPosition.position;
+
+            // ë‚´ë ¤ë†“ê¸°
+            if (Input.GetKeyDown(downKey))
+            {
+                DropKey();
+            }
+
+            // ê±´ë„¤ì£¼ê¸°
+            if (Input.GetKeyDown(interactKey))
+            {
+                TryGiveKey();
+            }
+        }
     }
 
     private void Move()
@@ -52,43 +87,49 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ºÒ Ä³¸¯ÅÍ - ¹°¿¡ ´êÀ¸¸é Á×À½
+        // ë¶ˆ í”Œë ˆì´ì–´ - ë¬¼ì— ë‹¿ìœ¼ë©´ ì£½ìŒ
         if (playerType == "Fire" && collision.CompareTag("Water"))
-        {
             Die();
-        }
 
-        // ¹° Ä³¸¯ÅÍ - ºÒ¿¡ ´êÀ¸¸é Á×À½
+        // ë¬¼ í”Œë ˆì´ì–´ - ë¶ˆì— ë‹¿ìœ¼ë©´ ì£½ìŒ
         if (playerType == "Water" && collision.CompareTag("Fire"))
-        {
             Die();
-        }
 
-        // ¹öÆ°
-        if (collision.CompareTag("Button"))
+        // í‚¤ íšë“ (ì†ì„±ê³¼ ìƒê´€ì—†ì´)
+        if (collision.CompareTag("Key"))
         {
-            collision.GetComponent<ButtonTrigger>()?.Press();
-        }
-
-        // ·¹¹ö (±ÙÃ³¿¡¼­¸¸ È°¼ºÈ­ ¡æ EÅ°)
-        if (collision.CompareTag("Lever"))
-        {
-            Lever lever = collision.GetComponent<Lever>();
-            if (lever != null)
-                lever.SetPlayerInRange(this);
+            KeyItem key = collision.GetComponent<KeyItem>();
+            if (key != null && heldKey == null)
+            {
+                PickUpKey(key);
+            }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void PickUpKey(KeyItem key)
     {
-        if (collision.CompareTag("Button"))
-        {
-            collision.GetComponent<ButtonTrigger>()?.Release();
-        }
+        heldKey = key;
+        key.PickUp(this);
+        Debug.Log($"{playerType} player picked up a {key.keyType} key!");
+    }
 
-        if (collision.CompareTag("Lever"))
+    private void DropKey()
+    {
+        heldKey.Drop();
+        heldKey = null;
+        Debug.Log($"{playerType} dropped the key.");
+    }
+
+    private void TryGiveKey()
+    {
+        if (otherPlayer == null || heldKey == null) return;
+
+        float distance = Vector2.Distance(transform.position, otherPlayer.transform.position);
+        if (distance < 2f && otherPlayer.heldKey == null)
         {
-            collision.GetComponent<Lever>()?.SetPlayerInRange(null);
+            heldKey.TransferTo(otherPlayer);
+            heldKey = null;
+            Debug.Log($"{playerType} gave key to {otherPlayer.playerType}!");
         }
     }
 
