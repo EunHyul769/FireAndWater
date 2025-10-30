@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public enum ObjectType { Buton, Leber, Pool, Gate, Box, Slide}
+public enum ObjectType { Buton, Lever, Pool, Gate, Box, Slide}
 
 public enum ObjectElement {Fire, Water, None}
 
@@ -40,7 +40,7 @@ public class InteractObject : MonoBehaviour
     {
         InteractPlayerNum++;
         Debug.Log($"{this.name} nearby {InteractPlayerNum}OB");
-        Interact(); //test call
+        //Interact(); //test call
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -48,7 +48,7 @@ public class InteractObject : MonoBehaviour
         InteractPlayerNum--;
         if(InteractPlayerNum <= 0)
         {
-            InteractOut();  //test call
+            //InteractOut();  //test call
         }  
     }
 }
