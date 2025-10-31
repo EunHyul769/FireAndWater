@@ -27,7 +27,7 @@ public class KeySlideobject : InteractObject
                         Debug.Log("Key Element checked");
                         Interact();
                     }
-                    // + 사용한 키 삭제 처리
+                    Destroy(collision.gameObject);
                 }
             } 
         }     
