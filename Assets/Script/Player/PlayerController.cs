@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             heldKey.transform.position = keyHoldPosition.position;
 
-            // ⬇내려놓기
+            // 내려놓기
             if (Input.GetKeyDown(downKey))
             {
                 DropKey();
