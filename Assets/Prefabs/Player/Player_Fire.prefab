@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerType: Fire
   moveSpeed: 5
-  jumpForce: 7
+  jumpForce: 14
   leftKey: 97
   rightKey: 100
   downKey: 115
