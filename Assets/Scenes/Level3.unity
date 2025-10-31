@@ -4684,6 +4684,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8173472616433915688, guid: 64162ed6998d7cd4d8d057411a31a145, type: 3}
   m_PrefabInstance: {fileID: 1375330902}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1396815860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1396815862}
+  - component: {fileID: 1396815861}
+  m_Layer: 0
+  m_Name: StageInfos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1396815861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396815860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a6824c4d6250744a393d3a5d1d9c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageLevel: 3
+  stageClearTime: 0
+  stageBoxsprite: {fileID: 21300000, guid: 7bdf14b6a1f36ef418f50f46a0aa1f37, type: 3}
+  stageSlideSprite:
+  - {fileID: 21300000, guid: f46c64c9beeb6154381695599687bf52, type: 3}
+  - {fileID: 21300000, guid: 5da0080464aee9342b0141de6d3be869, type: 3}
+  - {fileID: 21300000, guid: 9ee88729ed3e9124abd168c5462a0806, type: 3}
+--- !u!4 &1396815862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396815860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1510299462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5323,5 +5374,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1187269044}
+  - {fileID: 1396815862}
   - {fileID: 855748694}
   - {fileID: 1197230793}
