@@ -8,6 +8,11 @@ public class SlideObject : MonoBehaviour
     [SerializeField] private float distance;
     [SerializeField] private float moveTime;
 
+    [SerializeField] private SpriteRenderer leftSprite;
+    [SerializeField] private SpriteRenderer middleSprite;
+    [SerializeField] private SpriteRenderer rightSprite;
+    
+
     private Coroutine currentCoroutine;
 
     private Vector3 startPos;
@@ -15,6 +20,15 @@ public class SlideObject : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
+        StageInfo stgInfo = GameObject.Find("StageInfos").GetComponent<StageInfo>();
+        if(stgInfo != null)
+        {
+            leftSprite.sprite = stgInfo.stageSlideSprite[0];
+
+            middleSprite.sprite = stgInfo.stageSlideSprite[1];
+
+            rightSprite.sprite = stgInfo.stageSlideSprite[2];
+        }
     }
     
     public void ActiveSlide()

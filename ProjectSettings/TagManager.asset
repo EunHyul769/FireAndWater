@@ -9,6 +9,8 @@ TagManager:
   - Key
   - Fire
   - Water
+  - Goal_Fire
+  - Goal_Water
   layers:
   - Default
   - TransparentFX
