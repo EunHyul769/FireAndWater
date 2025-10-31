@@ -143,4 +143,43 @@ public class GameManager : MonoBehaviour
         goalFire.OnActivated -= OnGoalOpend;
         goalWater.OnActivated -= OnGoalOpend;
     }
+
+    public void OnClickNextStage()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string currentName = currentScene.name;
+
+        // 현재 씬 이름이 "Level1", "Level2" 등이라고 가정
+        if (currentName.StartsWith("Level"))
+        {
+            // 숫자 부분만 추출
+            string numberPart = currentName.Substring("Level".Length);
+            if (int.TryParse(numberPart, out int currentLevel))
+            {
+                int nextLevel = currentLevel + 1;
+                string nextSceneName = "Level" + nextLevel;
+
+                // 씬이 존재하는지 확인
+                if (Application.CanStreamedLevelBeLoaded(nextSceneName))
+                {
+                    Debug.Log($"다음 스테이지로 이동: {nextSceneName}");
+                    SceneManager.LoadScene(nextSceneName);
+                }
+                else
+                {
+                    Debug.Log("다음 스테이지가 없습니다. 스테이지 선택 화면으로 이동합니다.");
+                    SceneManager.LoadScene("StageChoiceScene");
+                }
+            }
+            else
+            {
+                Debug.LogError($"씬 이름 '{currentName}'에서 숫자를 추출할 수 없습니다!");
+            }
+        }
+        else
+        {
+            Debug.Log("이 씬은 스테이지(Scene)가 아닙니다. 스테이지 선택으로 복귀합니다.");
+            SceneManager.LoadScene("StageChoiceScene");
+        }
+    }
 }
