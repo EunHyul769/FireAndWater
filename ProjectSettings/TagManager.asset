@@ -12,6 +12,7 @@ TagManager:
   - Goal_Water
   - Key_Fire
   - Key_Water
+  - Lever
   layers:
   - Default
   - TransparentFX

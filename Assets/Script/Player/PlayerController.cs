@@ -118,6 +118,20 @@ public class PlayerController : MonoBehaviour
             if (key != null && heldKey == null)
                 PickUpKey(key);
         }
+
+        if (collision.CompareTag("Lever"))
+        {
+            Lever lever = collision.GetComponent<Lever>();
+            if (lever != null)
+                lever.SetPlayerInRange(this); // 레버 연결 발생
+        }
+
+        if (collision.CompareTag("Lever"))
+        {
+            Lever lever = collision.GetComponent<Lever>();
+            if (lever != null)
+                lever.SetPlayerInRange(null); // 레버 연결 해제
+        }
     }
 
     private void PickUpKey(KeyItem key)
