@@ -6,13 +6,13 @@ TagManager:
   tags:
   - Player_Fire
   - Player_Water
-  - Key
-  - Water
   - Goal_Fire
   - Goal_Water
   - Key_Fire
   - Key_Water
   - Lever
+  - Fire
+  - Water
   layers:
   - Default
   - TransparentFX
