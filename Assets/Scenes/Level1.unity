@@ -161,6 +161,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1007468605}
     m_Modifications:
+    - target: {fileID: 2774841470518138829, guid: f71ae2634e0b1a543ad5e55fb099483b, type: 3}
+      propertyPath: jumpForce
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774841470518138829, guid: f71ae2634e0b1a543ad5e55fb099483b, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7149305156041042800, guid: f71ae2634e0b1a543ad5e55fb099483b, type: 3}
       propertyPath: m_Name
       value: Player_Fire
@@ -258,7 +266,7 @@ GameObject:
   - component: {fileID: 865095969}
   - component: {fileID: 865095968}
   - component: {fileID: 865095970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1793,6 +1801,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Water
       objectReference: {fileID: 0}
+    - target: {fileID: 7050872667896073546, guid: e5b24220a704ef74f8c225a4e43efa3c, type: 3}
+      propertyPath: jumpForce
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050872667896073546, guid: e5b24220a704ef74f8c225a4e43efa3c, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8944578529146306564, guid: e5b24220a704ef74f8c225a4e43efa3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.5
@@ -1855,7 +1871,7 @@ GameObject:
   - component: {fileID: 1753666266}
   - component: {fileID: 1753666265}
   - component: {fileID: 1753666267}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
