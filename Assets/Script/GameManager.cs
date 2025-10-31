@@ -44,8 +44,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"씬 로드됨: {scene.name}");
 
-        // 원하는 초기화 코드 실행
-        startStage(99);
+        // MainUI 씬이 로드되어 있지 않다면 추가 로드
+        if (!SceneManager.GetSceneByName("MainUI").isLoaded)
+        {
+            SceneManager.LoadScene("MainUI", LoadSceneMode.Additive);
+            Debug.Log("MainUI 씬을 Additive로 로드함");
+        }
     }
 
     // 스테이지 클리어 시 처리
@@ -133,7 +137,7 @@ public class GameManager : MonoBehaviour
         if(goalWater.isOpen && goalFire.isOpen)
         {
             Debug.Log("Both opened");
-            ClearStage();
+            StageClear();
         }
     }
     
