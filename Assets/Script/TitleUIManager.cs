@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class TitleUIManager : MonoBehaviour
 {
+
+    public GameObject creditPanel;
+
+    private void Start()
+    {
+        creditPanel.SetActive(false);
+    }
+
     public void OnClickStart()
     {
         SceneManager.LoadScene("StageChoiceScene"); 
@@ -12,7 +20,12 @@ public class TitleUIManager : MonoBehaviour
 
     public void OnClickCredit()
     {
-        SceneManager.LoadScene("CreditScene");
+        creditPanel.SetActive(true);
+    }
+
+    public void OnClickBackFromCredit()
+    {
+        creditPanel.SetActive(false);
     }
 
     public void OnClickQuit()
