@@ -14,17 +14,20 @@ public class KeySlideobject : InteractObject
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<PlayerController>().heldKey != null)          
+        if(collision.CompareTag("Player_Fire") || collision.CompareTag("Player_Water"))
         {
-            if (PlayerCheck(collision))
+            if(collision.GetComponent<PlayerController>().heldKey != null)          
             {
-                if (CompareKeyElement(collision.GetComponent<PlayerController>().heldKey))
+                if (PlayerCheck(collision))
                 {
-                    Interact();
+                    if (CompareKeyElement(collision.GetComponent<PlayerController>().heldKey))
+                    {
+                        Interact();
+                    }
+                    // + 사용한 키 삭제 처리
                 }
-                // + 사용한 키 삭제 처리
-            }
-        }
+            } 
+        }     
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
