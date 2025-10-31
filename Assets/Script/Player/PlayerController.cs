@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         if (playerType == "Water" && collision.CompareTag("Fire"))
             Die();
 
-        if (collision.CompareTag("Key"))
+        if (collision.CompareTag("Key_Fire")||collision.CompareTag("Key_Water"))
         {
             KeyItem key = collision.GetComponent<KeyItem>();
             if (key != null && heldKey == null)
