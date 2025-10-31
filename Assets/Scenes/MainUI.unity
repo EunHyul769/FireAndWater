@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 108939342}
   - component: {fileID: 108939341}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ClearText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 313236847}
   - component: {fileID: 313236849}
   - component: {fileID: 313236848}
+  - component: {fileID: 313236850}
   m_Layer: 5
   m_Name: StageClearPanel
   m_TagString: Untagged
@@ -429,6 +430,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313236846}
   m_CullTransparentMesh: 1
+--- !u!114 &313236850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313236846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbdd4bce7d2eed4dbb3d43adb710a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageClearPanel: {fileID: 313236846}
+  clearTimeText: {fileID: 951061013}
 --- !u!1 &604027318
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +660,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 697535856}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313236850}
+        m_TargetAssemblyTypeName: StageClearUIManager, Assembly-CSharp
+        m_MethodName: OnClickStageSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &697535856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +927,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1053227525}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313236850}
+        m_TargetAssemblyTypeName: StageClearUIManager, Assembly-CSharp
+        m_MethodName: OnClickMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1053227525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,7 +1487,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1363108317}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313236850}
+        m_TargetAssemblyTypeName: StageClearUIManager, Assembly-CSharp
+        m_MethodName: OnClickNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1363108317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1837,7 +1888,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1694343439}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313236850}
+        m_TargetAssemblyTypeName: StageClearUIManager, Assembly-CSharp
+        m_MethodName: OnClickRetry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1694343439
 MonoBehaviour:
   m_ObjectHideFlags: 0

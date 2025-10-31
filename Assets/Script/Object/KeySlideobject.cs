@@ -12,6 +12,11 @@ public class KeySlideobject : InteractObject
 
     private Vector3 startPos;
 
+    void Start()
+    {
+        startPos = transform.position;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player_Fire") || collision.gameObject.CompareTag("Player_Water"))
