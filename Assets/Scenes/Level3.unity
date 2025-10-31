@@ -3092,11 +3092,6 @@ Transform:
   - {fileID: 1677214827}
   m_Father: {fileID: 909946303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1149364942 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5053293956208514906, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
-  m_PrefabInstance: {fileID: 1510299462}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1178181698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4875,7 +4870,7 @@ PrefabInstance:
     - target: {fileID: 859971483191819567, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
       propertyPath: targetSlide
       value: 
-      objectReference: {fileID: 1149364942}
+      objectReference: {fileID: 0}
     - target: {fileID: 1918405006704554236, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.5
@@ -4916,9 +4911,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4491662636133077705, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491662636133077705, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5053293956208514906, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
       propertyPath: m_Name
       value: EventObject_KeySlide(4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482966113495461414, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482966113495461414, guid: f7ce6d6541703ef42902a8b48ce7dccb, type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
