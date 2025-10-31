@@ -7,7 +7,13 @@ public class SceneController : MonoBehaviour
 {
     public void OnStageClear()
     {
-        GameManager.Instance.StageClear();
+        TimeManager.Instance.StopTimer();
+        float clearTime = TimeManager.Instance.GetElapsedTime();
+
+        // MainUI에서 StageClearUIManager 찾기
+        StageClearUIManager clearUI = FindObjectOfType<StageClearUIManager>();
+        if (clearUI != null)
+            clearUI.ShowStageClearUI(clearTime);
     }
 
     public void OnRetryStage()
