@@ -6,7 +6,7 @@ public class GemObject : InteractObject
 {
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (PlayerCheck(collision))
+        if (PlayerCheck(collision.gameObject))
         {
             Destroy(gameObject);
 
