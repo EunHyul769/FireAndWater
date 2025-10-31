@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     // 스테이지 클리어 시 처리
     public void StageClear()
     {
+        Debug.Log($"{currentScene.name} clear!!!");
+
         //타이머 정지, 클탐 계산
         TimeManager.Instance.StopTimer();
         float clearTime = TimeManager.Instance.GetElapsedTime();
@@ -124,16 +126,12 @@ public class GameManager : MonoBehaviour
         }    
     }
 
-    private void ClearStage()
-    {
-        Debug.Log($"{currentScene.name} clear!!!");
-    }   
     private void OnGoalOpend()
     {
         if(goalWater.isOpen && goalFire.isOpen)
         {
             Debug.Log("Both opened");
-            ClearStage();
+            StageClear();
         }
     }
     
