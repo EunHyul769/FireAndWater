@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7811869532186107879}
   - component: {fileID: 4132625137814515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: -2867934763860547926}
   - component: {fileID: -3592949339105368667}
   - component: {fileID: -1822239250976477712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EventObject_Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}

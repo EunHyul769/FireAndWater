@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5582026733434415941}
   - component: {fileID: 7519317979720387391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpSprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4491662636133077705}
   - component: {fileID: 4880647735043334298}
   - component: {fileID: 859971483191819567}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EventObject_KeySlide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 101886867880303695}
   - component: {fileID: 5482966113495461414}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpSprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

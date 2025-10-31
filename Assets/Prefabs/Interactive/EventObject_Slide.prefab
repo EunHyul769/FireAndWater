@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6760250092532432842}
   - component: {fileID: 9018418524197856612}
   - component: {fileID: 7945939124107889573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EventObject_Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5233806480767927725}
   - component: {fileID: 2683637779899432250}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5434032424291386791}
   - component: {fileID: 4291217290776331409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
