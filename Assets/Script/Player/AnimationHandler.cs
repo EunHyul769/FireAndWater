@@ -6,6 +6,7 @@ public class AnimationHandler : MonoBehaviour
 {
     private static readonly int IsMoving = Animator.StringToHash("IsMove");
     private static readonly int IsJump = Animator.StringToHash("IsJump");
+    private static readonly int IsDead = Animator.StringToHash("IsDead");
 
     protected Animator animator;
 
@@ -27,5 +28,10 @@ public class AnimationHandler : MonoBehaviour
     public void JumpEnd()
     {
         animator.SetBool(IsJump, false);
+    }
+
+    public void Dead(Vector2 obj) 
+    {
+        animator.SetBool(IsDead, true);
     }
 }
