@@ -45,12 +45,25 @@ public class GameManager : MonoBehaviour
     // 스테이지 클리어 시 처리
     public void StageClear()
     {
+        //타이머 정지, 클탐 계산
         TimeManager.Instance.StopTimer();
         float clearTime = TimeManager.Instance.GetElapsedTime();
         PlayerPrefs.SetFloat("ClearTime", clearTime);
 
+        //현재 스테이지 이름 기록
         lastStageName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene("StageClearScene");
+
+        //스테이지클리어ui매니저 찾아서 표시
+        StageClearUIManager clearUI = FindObjectOfType<StageClearUIManager>();
+        if (clearUI != null)
+        {
+            clearUI.ShowStageClearUI(clearTime);
+        }
+        else
+        {
+            Debug.LogWarning("StageClearUIManager를 찾을 수 없습니다. MainUI 씬이 로드되어 있는지 확인하세요.");
+        }
+
     }
 
     // 다음 스테이지 이동
@@ -77,6 +90,7 @@ public class GameManager : MonoBehaviour
     // Juwon
     private void startStage(int i)
     {
+
         if (i < scenes.Length)
         {
             // 씬 메니저 연결 
