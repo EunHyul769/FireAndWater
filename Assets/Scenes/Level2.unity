@@ -1764,7 +1764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8173472616433915688, guid: 64162ed6998d7cd4d8d057411a31a145, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8173472616433915688, guid: 64162ed6998d7cd4d8d057411a31a145, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1802,6 +1802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8677012931063180603, guid: 64162ed6998d7cd4d8d057411a31a145, type: 3}
+      propertyPath: targetSlide
+      value: 
+      objectReference: {fileID: 1662771707}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2775,6 +2779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventObject_Lever (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6188443509235884838, guid: 9fb9d1d6df87c97428bfbe24fad7ca5e, type: 3}
+      propertyPath: targetSlide
+      value: 
+      objectReference: {fileID: 1727085633}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4044,6 +4052,16 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1662771707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782378038566053739, guid: 4750a51a4e43ffd48a1c6b47406ae343, type: 3}
+  m_PrefabInstance: {fileID: 330700735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1727085633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782378038566053739, guid: 4750a51a4e43ffd48a1c6b47406ae343, type: 3}
+  m_PrefabInstance: {fileID: 213739886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1800057458
 GameObject:
   m_ObjectHideFlags: 0

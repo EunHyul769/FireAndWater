@@ -14,12 +14,14 @@ public class KeySlideobject : InteractObject
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<PlayerController>().heldKey != null)
+        if(collision.GetComponent<PlayerController>().heldKey != null)          
         {
             if (PlayerCheck(collision))
             {
-                Interact();
-
+                if (CompareKeyElement(collision.GetComponent<PlayerController>().heldKey))
+                {
+                    Interact();
+                }
                 // + 사용한 키 삭제 처리
             }
         }
@@ -67,5 +69,21 @@ public class KeySlideobject : InteractObject
         }
 
         transform.position = targetPos;
+    }
+
+    private bool CompareKeyElement(KeyItem keyItem)
+    {
+        if (Element == ObjectElement.Fire && keyItem.CompareTag("Key_Fire"))
+        {
+            return true;
+        }
+        else if (Element == ObjectElement.Water && keyItem.CompareTag("Key_Water"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

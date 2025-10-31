@@ -112,11 +112,25 @@ public class PlayerController : MonoBehaviour
         if (playerType == "Water" && collision.CompareTag("Fire"))
             Die();
 
-        if (collision.CompareTag("Key"))
+        if (collision.CompareTag("Key_Fire")||collision.CompareTag("Key_Water"))
         {
             KeyItem key = collision.GetComponent<KeyItem>();
             if (key != null && heldKey == null)
                 PickUpKey(key);
+        }
+
+        if (collision.CompareTag("Lever"))
+        {
+            Lever lever = collision.GetComponent<Lever>();
+            if (lever != null)
+                lever.SetPlayerInRange(this); // 레버 연결 발생
+        }
+
+        if (collision.CompareTag("Lever"))
+        {
+            Lever lever = collision.GetComponent<Lever>();
+            if (lever != null)
+                lever.SetPlayerInRange(null); // 레버 연결 해제
         }
     }
 
