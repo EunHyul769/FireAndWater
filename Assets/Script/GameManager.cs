@@ -35,11 +35,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // 씬 로드 이벤트 구독
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void Start()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        startStage(99); // 골 테스트용 
+        Debug.Log($"씬 로드됨: {scene.name}");
+
+        // 원하는 초기화 코드 실행
+        startStage(99);
     }
 
     // 스테이지 클리어 시 처리
