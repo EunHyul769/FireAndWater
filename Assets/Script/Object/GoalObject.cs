@@ -48,34 +48,4 @@ public class GoalObject : InteractObject
             isOpen = false;
         }
     }
-    
-    private bool PlayerCheck(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player_Fire"))
-        {
-            if (Element == ObjectElement.Fire)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else if (collision.gameObject.CompareTag("Player_Water"))
-        {
-            if (Element == ObjectElement.Water)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
