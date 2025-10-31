@@ -21,15 +21,18 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded = false;
-    private bool facingRight = true; // 오른쪽 바라보는 상태 기본값
+    private bool facingRight = true;
 
     // Key system
     [HideInInspector] public KeyItem heldKey = null;
     public Transform keyHoldPosition;
     private PlayerController otherPlayer;
 
-    // Animation Handler 추가
+    // Animation Handler
     private AnimationHandler animationHandler;
+
+    // 레버 근처 감지용
+    private LeverObject nearbyLever;
 
     private void Awake()
     {
@@ -52,6 +55,14 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
 
+        // 레버와 상호작용
+        if (nearbyLever != null && Input.GetKeyDown(interactKey))
+        {
+            nearbyLever.SetPlayerInRange(this);
+            
+        }
+
+        // 키 관련 기능
         if (heldKey != null)
         {
             heldKey.transform.position = keyHoldPosition.position;
@@ -72,15 +83,12 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(moveDir * moveSpeed, rb.velocity.y);
 
-        // 좌우 회전 처리
         if (moveDir > 0 && !facingRight)
             Flip(true);
         else if (moveDir < 0 && facingRight)
             Flip(false);
 
-        // 이동 애니메이션 적용
-        if (animationHandler != null)
-            animationHandler.Move(rb.velocity);
+        animationHandler?.Move(rb.velocity);
     }
 
     private void Flip(bool faceRight)
@@ -106,31 +114,46 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 불 캐릭터 - 물에 닿으면 죽음
         if (playerType == "Fire" && collision.CompareTag("Water"))
             Die();
 
+        // 물 캐릭터 - 불에 닿으면 죽음
         if (playerType == "Water" && collision.CompareTag("Fire"))
             Die();
 
-        if (collision.CompareTag("Key_Fire")||collision.CompareTag("Key_Water"))
+        // 키 획득
+        if (collision.CompareTag("Key_Fire") || collision.CompareTag("Key_Water"))
         {
             KeyItem key = collision.GetComponent<KeyItem>();
             if (key != null && heldKey == null)
                 PickUpKey(key);
         }
 
+        // LeverObject 감지
         if (collision.CompareTag("Lever"))
         {
-            Lever lever = collision.GetComponent<Lever>();
+            LeverObject lever = collision.GetComponent<LeverObject>();
             if (lever != null)
-                lever.SetPlayerInRange(this); // 레버 연결 발생
+            {
+                nearbyLever = lever;
+                lever.SetPlayerInRange(this);
+            }
         }
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // 레버 범위를 벗어나면 연결 해제
         if (collision.CompareTag("Lever"))
         {
-            Lever lever = collision.GetComponent<Lever>();
+            LeverObject lever = collision.GetComponent<LeverObject>();
             if (lever != null)
-                lever.SetPlayerInRange(null); // 레버 연결 해제
+            {
+                lever.SetPlayerInRange(null);
+                if (nearbyLever == lever)
+                    nearbyLever = null;
+            }
         }
     }
 
@@ -164,6 +187,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{playerType} Player died!");
+        animationHandler?.Dead(rb.velocity);
         gameObject.SetActive(false);
     }
 }
