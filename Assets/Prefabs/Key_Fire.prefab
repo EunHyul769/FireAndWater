@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6355200829094403253}
   m_Layer: 8
   m_Name: Key_Fire
-  m_TagString: Key
+  m_TagString: Key_Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
