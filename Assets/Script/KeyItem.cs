@@ -5,68 +5,101 @@ using UnityEngine;
 public class KeyItem : MonoBehaviour
 {
     public string keyType = "Fire"; // "Fire" or "Water"
+    public GameObject keyPrefab;    // 재생성용 프리팹
+
     private Rigidbody2D rb;
-    private Collider2D col;
+    private Collider2D[] colliders; // 여러 Collider 제어용
     private PlayerController owner;
+
+    private bool isLocked = false;
+    private bool isPickedUp = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
+        colliders = GetComponents<Collider2D>(); // 모든 콜라이더 가져오기
     }
 
     public void PickUp(PlayerController player)
     {
+        if (isLocked || isPickedUp || owner != null)
+            return;
+
+        isLocked = true;
+        StartCoroutine(UnlockAfterDelay(0.05f));
+
+        isPickedUp = true;
         owner = player;
+
+        // 모든 Collider 비활성화 (머리 위에서는 감지 안 되게)
+        foreach (Collider2D c in colliders)
+            c.enabled = false;
+
+        // 물리 정지
         rb.isKinematic = true;
-        col.isTrigger = true;
-        col.enabled = false;
+        rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
+
+        // 플레이어 머리 위로 이동
         transform.SetParent(player.keyHoldPosition);
+        transform.localPosition = Vector3.zero;
+
+        Debug.Log($"{player.playerType} picked up {keyType} key!");
+    }
+
+    private IEnumerator UnlockAfterDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isLocked = false;
     }
 
     public void Drop()
     {
         if (owner == null) return;
 
-        // 플레이어 바라보는 방향 계산
-        float dropOffset = 1f;
+        // 방향 계산
+        float dropOffset = 1.2f;
         Vector3 dropPos = owner.transform.position;
+        float dir = owner.transform.rotation.y == 0 ? 1f : -1f;
+        dropPos += new Vector3(dir * dropOffset, 0.5f, 0);
 
-        bool isLeft = owner.GetComponent<SpriteRenderer>()?.flipX ?? false;
-        float dir = isLeft ? -1f : 1f;
+        // 새 열쇠 생성
+        if (keyPrefab != null)
+        {
+            GameObject newKey = Instantiate(keyPrefab, dropPos, Quaternion.identity);
 
-        dropPos += new Vector3(dir * dropOffset, 0.5f, 0); // 살짝 위
+            Rigidbody2D newRb = newKey.GetComponent<Rigidbody2D>();
+            if (newRb != null)
+            {
+                newRb.bodyType = RigidbodyType2D.Dynamic;
+                newRb.gravityScale = 1f;
+                newRb.AddForce(Vector2.down * 1.5f, ForceMode2D.Impulse);
+            }
 
-        // 부모 해제 후 위치 재설정
-        transform.SetParent(null);
-        transform.position = dropPos;
+            // 새 열쇠의 모든 콜라이더 다시 활성화
+            Collider2D[] newCols = newKey.GetComponents<Collider2D>();
+            foreach (Collider2D c in newCols)
+                c.enabled = true;
 
-        // 물리 활성화
-        rb.isKinematic = false;
-        col.isTrigger = false;
-        rb.velocity = Vector2.zero;
+            KeyItem newKeyItem = newKey.GetComponent<KeyItem>();
+            newKeyItem.keyType = keyType;
 
-        rb.WakeUp();
+            Debug.Log($"Dropped new {keyType} key at {dropPos}");
+        }
+
+        Destroy(gameObject);
 
         owner.heldKey = null;
         owner = null;
-
-        // 1초간 다시 줍지 않게
-        //StartCoroutine(TemporarilyDisablePickup(1f));
     }
 
     public void TransferTo(PlayerController newOwner)
     {
+        if (owner == newOwner) return;
+
         transform.SetParent(null);
         owner = newOwner;
         newOwner.heldKey = this;
         transform.position = newOwner.keyHoldPosition.position;
-    }
-
-    IEnumerator TemporarilyDisablePickup(float duration)
-    {
-        col.isTrigger = true;   // 1초 동안 감지만 막기
-        yield return new WaitForSeconds(duration);
-        col.isTrigger = false;  // 다시 감지 가능
     }
 }

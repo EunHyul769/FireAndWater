@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded = false;
+    private bool facingRight = true; // 오른쪽 바라보는 상태 기본값
 
     // Key system
     [HideInInspector] public KeyItem heldKey = null;
@@ -33,12 +34,12 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animationHandler = GetComponentInChildren<AnimationHandler>(); // Animator 제어 담당
+        animationHandler = GetComponentInChildren<AnimationHandler>();
     }
 
     private void Start()
     {
-        // 씬에서 다른 플레이어 찾기
+        // 다른 플레이어 탐색
         foreach (PlayerController p in FindObjectsOfType<PlayerController>())
         {
             if (p != this)
@@ -51,22 +52,15 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
 
-        // 키 들고 있을 때
         if (heldKey != null)
         {
             heldKey.transform.position = keyHoldPosition.position;
 
-            // 내려놓기
             if (Input.GetKeyDown(downKey))
-            {
                 DropKey();
-            }
 
-            // 건네주기
             if (Input.GetKeyDown(interactKey))
-            {
                 TryGiveKey();
-            }
         }
     }
 
@@ -78,11 +72,21 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(moveDir * moveSpeed, rb.velocity.y);
 
+        // 좌우 회전 처리
+        if (moveDir > 0 && !facingRight)
+            Flip(true);
+        else if (moveDir < 0 && facingRight)
+            Flip(false);
+
         // 이동 애니메이션 적용
         if (animationHandler != null)
-        {
             animationHandler.Move(rb.velocity);
-        }
+    }
+
+    private void Flip(bool faceRight)
+    {
+        facingRight = faceRight;
+        transform.rotation = faceRight ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
     }
 
     private void Jump()
@@ -90,42 +94,29 @@ public class PlayerController : MonoBehaviour
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
-        // 땅 위에서 점프 키를 눌렀을 때 점프
         if (isGrounded && Input.GetKeyDown(jumpKey))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
-            // 점프 애니메이션 시작
-            if (animationHandler != null)
-                animationHandler.Jump(rb.velocity);
+            animationHandler?.Jump(rb.velocity);
         }
 
-        // 착지했을 때 점프 애니메이션 해제
         if (!wasGrounded && isGrounded)
-        {
-            if (animationHandler != null)
-                animationHandler.JumpEnd();
-        }
+            animationHandler?.JumpEnd();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 불 플레이어 - 물에 닿으면 죽음
         if (playerType == "Fire" && collision.CompareTag("Water"))
             Die();
 
-        // 물 플레이어 - 불에 닿으면 죽음
         if (playerType == "Water" && collision.CompareTag("Fire"))
             Die();
 
-        // 키 획득 (속성과 상관없이)
         if (collision.CompareTag("Key"))
         {
             KeyItem key = collision.GetComponent<KeyItem>();
             if (key != null && heldKey == null)
-            {
                 PickUpKey(key);
-            }
         }
     }
 
