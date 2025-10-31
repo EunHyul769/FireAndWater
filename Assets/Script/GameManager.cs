@@ -1,25 +1,128 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
+
 {
-    private static GameManager instance;
-    public static GameManager Instance
+    public static GameManager Instance;
+    public string lastStageName;  // 마지막 클리어한 스테이지 이름 저장용
+
+    public SceneController sceneController;
+    public TimeManager timeManager;
+    public TitleUIManager titleUIManager;
+    public StageClearScene stageClearScene;
+    
+    // scene ready_Juwon
+    [SerializeField] private Scene[] scenes;
+    [SerializeField] private Scene currentScene;
+    // stage run/stop
+    [SerializeField] private bool isRunning = true;
+    [SerializeField] private GoalObject goalFire;
+    [SerializeField] private GoalObject goalWater;
+
+
+    void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (instance == null)
-            {
-                instance = new GameManager();
-            }
-            return instance;
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // 씬 넘어가도 유지
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        startStage(99); // 골 테스트용 
+    }
+
+    // 스테이지 클리어 시 처리
+    public void StageClear()
+    {
+        TimeManager.Instance.StopTimer();
+        float clearTime = TimeManager.Instance.GetElapsedTime();
+        PlayerPrefs.SetFloat("ClearTime", clearTime);
+
+        lastStageName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("StageClearScene");
+    }
+
+    // 다음 스테이지 이동
+    public void LoadNextStage(string nextStageName)
+    {
+        SceneManager.LoadScene(nextStageName);
+    }
+
+    // 현재 스테이지 재시작
+    public void RetryStage()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    // 타이틀로 복귀
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 
     // 게임의 모든 데이터는 GameManager가 소유하도록
 
 
+    // Juwon
+    private void startStage(int i)
+    {
+        if (i < scenes.Length)
+        {
+            // 씬 메니저 연결 
+            //SceneManager.LoadScene(scenes[i].name);
+            // 현재 씬 저장
+            //currentScene = scenes[i];
+        }
 
+        // 현재 스테이지에 있는 골 확인
+        if(GameObject.FindGameObjectWithTag("Goal_Fire") != null)
+        {
+          goalFire = GameObject.FindGameObjectWithTag("Goal_Fire").GetComponent<GoalObject>();
+            goalWater = GameObject.FindGameObjectWithTag("Goal_Water").GetComponent<GoalObject>();
+
+            if (goalFire == null || goalWater == null)
+            {
+                Debug.LogError("No Goal assigned, plz check goals in scene");
+            }
+            else
+            {
+                // 이벤트 구독
+                goalFire.OnActivated += OnGoalOpend;
+                goalWater.OnActivated += OnGoalOpend;
+            }  
+        }    
+    }
+
+    private void ClearStage()
+    {
+        Debug.Log($"{currentScene.name} clear!!!");
+    }   
+    private void OnGoalOpend()
+    {
+        if(goalWater.isOpen && goalFire.isOpen)
+        {
+            Debug.Log("Both opened");
+            ClearStage();
+        }
+    }
+    
+    private void ExitStage()
+    {
+        // 현재 씬 종료
+
+        // 메모리 누수 방지용 구독 해제???
+        goalFire.OnActivated -= OnGoalOpend;
+        goalWater.OnActivated -= OnGoalOpend;
+    }
 }

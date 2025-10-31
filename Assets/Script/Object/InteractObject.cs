@@ -40,7 +40,12 @@ public class InteractObject : MonoBehaviour
     {
         InteractPlayerNum++;
         Debug.Log($"{this.name} nearby {InteractPlayerNum}OB");
-        //Interact(); //test call
+
+        if(Type == ObjectType.Buton)
+        {
+            Interact();
+        }
+
         if(Type == ObjectType.Gate)
         {
             Interact();
@@ -50,9 +55,9 @@ public class InteractObject : MonoBehaviour
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         InteractPlayerNum--;
-        if (InteractPlayerNum <= 0)
+        if (InteractPlayerNum <= 0 && Type == ObjectType.Buton)
         {
-            //InteractOut();  //test call
+            InteractOut();
         }
 
         if (Type == ObjectType.Gate)

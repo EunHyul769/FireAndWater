@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GoalObject : InteractObject
 {
@@ -10,6 +11,8 @@ public class GoalObject : InteractObject
     public Sprite[] pressedSprite;
     public Sprite[] releasedSprite;
     public bool isOpen = false;
+
+    public event Action OnActivated;
 
     void Awake()
     {
@@ -34,6 +37,8 @@ public class GoalObject : InteractObject
             sr.sprite = pressedSprite[0];
             srUp.sprite = pressedSprite[1];
             isOpen = true;
+            Debug.Log($"{name} open!!!");
+            OnActivated?.Invoke();  // 이벤트 호출
         }
     }
 
@@ -46,36 +51,6 @@ public class GoalObject : InteractObject
             sr.sprite = releasedSprite[0];
             srUp.sprite = releasedSprite[1];
             isOpen = false;
-        }
-    }
-    
-    private bool PlayerCheck(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player_Fire"))
-        {
-            if (Element == ObjectElement.Fire)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else if (collision.gameObject.CompareTag("Player_Water"))
-        {
-            if (Element == ObjectElement.Water)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
         }
     }
 }
