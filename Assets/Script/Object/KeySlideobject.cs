@@ -12,19 +12,25 @@ public class KeySlideobject : InteractObject
 
     private Vector3 startPos;
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.GetComponent<PlayerController>().heldKey != null)          
+        if(collision.gameObject.CompareTag("Player_Fire") || collision.gameObject.CompareTag("Player_Water"))
         {
-            if (PlayerCheck(collision))
+            if(collision.gameObject.GetComponent<PlayerController>().heldKey != null)
             {
-                if (CompareKeyElement(collision.GetComponent<PlayerController>().heldKey))
+                Debug.Log("held key");
+                if (PlayerCheck(collision.gameObject))
                 {
-                    Interact();
+                    Debug.Log("Plyer checked");
+                    if (CompareKeyElement(collision.gameObject.GetComponent<PlayerController>().heldKey))
+                    {
+                        Debug.Log("Key Element checked");
+                        Interact();
+                    }
+                    // + 사용한 키 삭제 처리
                 }
-                // + 사용한 키 삭제 처리
-            }
-        }
+            } 
+        }     
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
@@ -34,7 +40,7 @@ public class KeySlideobject : InteractObject
 
     public override void Interact()
     {
-        Slide(true);
+        StartCoroutine(Slide(true));
     }
 
     public override void InteractOut()

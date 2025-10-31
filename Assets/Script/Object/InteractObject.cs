@@ -66,9 +66,9 @@ public class InteractObject : MonoBehaviour
         }
     }
     
-    protected bool PlayerCheck(Collider2D collision)
+    protected bool PlayerCheck(GameObject target)
     {
-        if (collision.gameObject.CompareTag("Player_Fire"))
+        if (target.CompareTag("Player_Fire"))
         {
             if (Element == ObjectElement.Fire)
             {
@@ -79,7 +79,7 @@ public class InteractObject : MonoBehaviour
                 return false;
             }
         }
-        else if (collision.gameObject.CompareTag("Player_Water"))
+        else if (target.CompareTag("Player_Water"))
         {
             if (Element == ObjectElement.Water)
             {

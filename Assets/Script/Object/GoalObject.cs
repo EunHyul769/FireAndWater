@@ -30,7 +30,7 @@ public class GoalObject : InteractObject
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (PlayerCheck(collision))
+        if (PlayerCheck(collision.gameObject))
         {
             //상호작용 실행
             //Interact();
@@ -44,7 +44,7 @@ public class GoalObject : InteractObject
 
     protected override void OnTriggerExit2D(Collider2D collision)
     {
-        if (PlayerCheck(collision))
+        if (PlayerCheck(collision.gameObject))
         {
             // 문 닫기
             //InteractOut();
