@@ -3811,6 +3811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventObject_Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 5890485124289847941, guid: 9fb9d1d6df87c97428bfbe24fad7ca5e, type: 3}
+      propertyPath: m_TagString
+      value: Lever
+      objectReference: {fileID: 0}
     - target: {fileID: 6188443509235884838, guid: 9fb9d1d6df87c97428bfbe24fad7ca5e, type: 3}
       propertyPath: targetSlide
       value: 
