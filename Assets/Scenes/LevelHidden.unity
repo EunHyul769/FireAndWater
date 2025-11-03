@@ -927,7 +927,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -952,7 +952,7 @@ Transform:
   m_GameObject: {fileID: 468208128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 4.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1200,11 +1200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7050872667896073546, guid: e5b24220a704ef74f8c225a4e43efa3c, type: 3}
       propertyPath: jumpForce
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7050872667896073546, guid: e5b24220a704ef74f8c225a4e43efa3c, type: 3}
       propertyPath: moveSpeed
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8944578529146306564, guid: e5b24220a704ef74f8c225a4e43efa3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1531,7 +1531,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1556,7 +1556,7 @@ Transform:
   m_GameObject: {fileID: 1090664805}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.36, z: -10}
+  m_LocalPosition: {x: 0, y: 4.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2487,11 +2487,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2774841470518138829, guid: f71ae2634e0b1a543ad5e55fb099483b, type: 3}
       propertyPath: jumpForce
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2774841470518138829, guid: f71ae2634e0b1a543ad5e55fb099483b, type: 3}
       propertyPath: moveSpeed
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7149305156041042800, guid: f71ae2634e0b1a543ad5e55fb099483b, type: 3}
       propertyPath: m_Name
