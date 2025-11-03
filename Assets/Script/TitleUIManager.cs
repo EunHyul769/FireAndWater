@@ -28,6 +28,11 @@ public class TitleUIManager : MonoBehaviour
         creditPanel.SetActive(false);
     }
 
+    public void OnClickHidden()
+    {
+        SceneManager.LoadScene("HiddenIntroScene");
+    }
+
     public void OnClickQuit()
     {
         Application.Quit();
