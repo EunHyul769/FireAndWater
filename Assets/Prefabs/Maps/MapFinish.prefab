@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8964607664521921600}
   - component: {fileID: 3120539629796401660}
   - component: {fileID: 3793137744417885374}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Ruler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1088,7 +1088,7 @@ GameObject:
   - component: {fileID: 7822756729063098406}
   - component: {fileID: 2979373452878456182}
   - component: {fileID: 6083905531809330699}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1909,7 +1909,7 @@ GameObject:
   - component: {fileID: 6774074890011521215}
   - component: {fileID: 2302398099704067952}
   - component: {fileID: 5504091289803601574}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
