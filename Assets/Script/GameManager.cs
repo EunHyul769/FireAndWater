@@ -182,4 +182,18 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("StageChoiceScene");
         }
     }
+
+    public int ScoreCheck()
+    {
+        int num = 1;
+
+        StageInfo stageInfo = GameObject.FindObjectOfType<StageInfo>();
+
+        float clearTime = TimeManager.Instance.GetElapsedTime();
+
+        if (clearTime < stageInfo.stageClearTime) num++;
+        if (stageInfo.stageGemNum <= 0) num++;
+
+        return num;
+    }
 }

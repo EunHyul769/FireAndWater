@@ -2849,8 +2849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageLevel: 1
-  stageClearTime: 0
+  stageClearTime: 100
   stageBoxsprite: {fileID: 21300000, guid: 7bdf14b6a1f36ef418f50f46a0aa1f37, type: 3}
+  stageGemNum: 0
   stageSlideSprite:
   - {fileID: 21300000, guid: 4031c675a0f0d43418c5377c4c07ecfe, type: 3}
   - {fileID: 21300000, guid: f85e405e897f6984a804bad141e2a46a, type: 3}

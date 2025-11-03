@@ -1,119 +1,119 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapSpawner : MonoBehaviour
 {
-    // Prefab_MapRanµé ÂüÁ¶¸¦ À§ÇÑ List_prefabList »ı¼º ¹× ÃÊ±âÈ­
+    // Prefab_MapRanë“¤ ì°¸ì¡°ë¥¼ ìœ„í•œ List_prefabList ìƒì„± ë° ì´ˆê¸°í™”
     public List<GameObject> prefabList = new List<GameObject>();
-    // Prefab_MapFinish ÂüÁ¶¸¦ À§ÇÑ GameObject_mapFinish »ı¼º
+    // Prefab_MapFinish ì°¸ì¡°ë¥¼ ìœ„í•œ GameObject_mapFinish ìƒì„±
     public GameObject mapFinish;
 
-    // Transform_MapRan ÂüÁ¶¸¦ À§ÇÑ mapRanParent »ı¼º
+    // Transform_MapRan ì°¸ì¡°ë¥¼ ìœ„í•œ mapRanParent ìƒì„±
     public Transform mapRanParent;
 
-    // ¸Ê¿¡ ¹èÄ¡ÇÒ Prefab_MapRanµéÀÇ °³¼ö Á¤ÀÇ (¿ÜºÎ¿¡¼­ °ª ¼öÁ¤ °¡´É)
+    // ë§µì— ë°°ì¹˜í•  Prefab_MapRanë“¤ì˜ ê°œìˆ˜ ì •ì˜ (ì™¸ë¶€ì—ì„œ ê°’ ìˆ˜ì • ê°€ëŠ¥)
     public int spawnCount = 1;
-    // ¸Ê¿¡ ¹èÄ¡ÇÒ PrefabµéÀÇ °£°İ Á¤ÀÇ (¿ÜºÎ¿¡¼­ °ª ¼öÁ¤ °¡´É)
+    // ë§µì— ë°°ì¹˜í•  Prefabë“¤ì˜ ê°„ê²© ì •ì˜ (ì™¸ë¶€ì—ì„œ ê°’ ìˆ˜ì • ê°€ëŠ¥)
     public float positionX = 50f;
 
     void Start()
     {
-        // MapRanParent°¡ ºñ¾îÀÖÀ» °æ¿ì
+        // MapRanParentê°€ ë¹„ì–´ìˆì„ ê²½ìš°
         if (mapRanParent == null)
         {
-            // LogWarning Ãâ·Â - "MapRanParent is Null"
+            // LogWarning ì¶œë ¥ - "MapRanParent is Null"
             Debug.LogWarning("MapRanParent is Null");
-            // ¹İÈ¯ (¾Æ·¡ ÄÚµå ¹«½Ã)
+            // ë°˜í™˜ (ì•„ë˜ ì½”ë“œ ë¬´ì‹œ)
             return;
         }
 
-        // MapFinish°¡ ºñ¾îÀÖÀ» °æ¿ì
+        // MapFinishê°€ ë¹„ì–´ìˆì„ ê²½ìš°
         if (mapFinish == null)
         {
-            // LogWarning Ãâ·Â - "MapFinish is Null"
+            // LogWarning ì¶œë ¥ - "MapFinish is Null"
             Debug.LogWarning("MapFinish is Null");
-            // ¹İÈ¯ (¾Æ·¡ ÄÚµå ¹«½Ã)
+            // ë°˜í™˜ (ì•„ë˜ ì½”ë“œ ë¬´ì‹œ)
             return;
         }
 
-        // ¸Ş¼­µå - Map »ı¼º È£Ãâ
+        // ë©”ì„œë“œ - Map ìƒì„± í˜¸ì¶œ
         SpawnMaps();
     }
 
-    // ¸Ş¼­µå(¾Ë°í¸®Áò) - 'Fisher-Yates Shuffle' - List Çü½ÄÀÇ ¸Å°³º¯¼ö ÂüÁ¶ ÈÄ List_list Á¤ÀÇ
+    // ë©”ì„œë“œ(ì•Œê³ ë¦¬ì¦˜) - 'Fisher-Yates Shuffle' - List í˜•ì‹ì˜ ë§¤ê°œë³€ìˆ˜ ì°¸ì¡° í›„ List_list ì •ì˜
     public static List<T> FisherYatesShuffleUnity<T>(List<T> list)
     {
-        // ¹İº¹¹® - ÂüÁ¶ÇÑ list ³» °ªµéÀÇ °³¼ö -1 ¸¸Å­
+        // ë°˜ë³µë¬¸ - ì°¸ì¡°í•œ list ë‚´ ê°’ë“¤ì˜ ê°œìˆ˜ -1 ë§Œí¼
         for (int i = list.Count - 1; i > 0; i--)
         {
-            // ÀÓÀÇÀÇ °ª »ı¼º ¹× ÃÊ±âÈ­ - ÂüÁ¶ÇÑ list ³» °ªµéÀÇ °³¼ö Áß ·£´ı °ª ÃßÃâ
+            // ì„ì˜ì˜ ê°’ ìƒì„± ë° ì´ˆê¸°í™” - ì°¸ì¡°í•œ list ë‚´ ê°’ë“¤ì˜ ê°œìˆ˜ ì¤‘ ëœë¤ ê°’ ì¶”ì¶œ
             int j = Random.Range(0, i + 1);
 
-            // Ä³½Ã °ª »ı¼º ¹× ÃÊ±âÈ­_ÂüÁ¶ÇÑ list ³» i¹ø Â° °ª
+            // ìºì‹œ ê°’ ìƒì„± ë° ì´ˆê¸°í™”_ì°¸ì¡°í•œ list ë‚´ ië²ˆ ì§¸ ê°’
             T temp = list[i];
-            // ÂüÁ¶ÇÑ list ³» i¹ø Â° °ª ÃÊ±âÈ­_ÂüÁ¶ÇÑ list ³» ÃßÃâÇÑ ·£´ı °ª¹ø Â° °ª
+            // ì°¸ì¡°í•œ list ë‚´ ië²ˆ ì§¸ ê°’ ì´ˆê¸°í™”_ì°¸ì¡°í•œ list ë‚´ ì¶”ì¶œí•œ ëœë¤ ê°’ë²ˆ ì§¸ ê°’
             list[i] = list[j];
-            // ÂüÁ¶ÇÑ list ³» ÃßÃâÇÑ ·£´ı °ª¹ø Â° °ª ÃÊ±âÈ­_Ä³½Ã °ª
+            // ì°¸ì¡°í•œ list ë‚´ ì¶”ì¶œí•œ ëœë¤ ê°’ë²ˆ ì§¸ ê°’ ì´ˆê¸°í™”_ìºì‹œ ê°’
             list[j] = temp;
         }
-        // À§ ¹İº¹¹®¿¡¼­ ÃßÃâµÇÁö ¾ÊÀº °ªÀº ÂüÁ¶ÇÑ listÀÇ ¸¶Áö¸·¿¡ ¹èÄ¡µÊ
+        // ìœ„ ë°˜ë³µë¬¸ì—ì„œ ì¶”ì¶œë˜ì§€ ì•Šì€ ê°’ì€ ì°¸ì¡°í•œ listì˜ ë§ˆì§€ë§‰ì— ë°°ì¹˜ë¨
 
-        // ¹İÈ¯ - ÂüÁ¶ÇÑ list·Î
+        // ë°˜í™˜ - ì°¸ì¡°í•œ listë¡œ
         return list;
     }
 
-    // ¸Ş¼­µå - Map »ı¼º
+    // ë©”ì„œë“œ - Map ìƒì„±
     void SpawnMaps()
     {
-        // prefabList°¡ ºñ¾îÀÖ°Å³ª, prefabList¿¡ °ªÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì
+        // prefabListê°€ ë¹„ì–´ìˆê±°ë‚˜, prefabListì— ê°’ì´ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš°
         if (prefabList == null || prefabList.Count == 0)
         {
-            // LogWarning Ãâ·Â - "PrefabList is Null"
+            // LogWarning ì¶œë ¥ - "PrefabList is Null"
             Debug.LogWarning("PrefabList is Null");
-            // ¹İÈ¯ (¾Æ·¡ ÄÚµå ¹«½Ã)
+            // ë°˜í™˜ (ì•„ë˜ ì½”ë“œ ë¬´ì‹œ)
             return;
         }
 
-        // List_shuffled »ı¼º ¹× ÃÊ±âÈ­ - prefabList °ª ÂüÁ¶   <<-- ¿øº» List¸¦ ¼¯À» °æ¿ì ¿øº»ÀÇ ¼ø¼­°¡ ±úÁú ¼ö ÀÖ±â¿¡ º¹Á¦º»À» »ı¼ºÇÔ
+        // List_shuffled ìƒì„± ë° ì´ˆê¸°í™” - prefabList ê°’ ì°¸ì¡°   <<-- ì›ë³¸ Listë¥¼ ì„ì„ ê²½ìš° ì›ë³¸ì˜ ìˆœì„œê°€ ê¹¨ì§ˆ ìˆ˜ ìˆê¸°ì— ë³µì œë³¸ì„ ìƒì„±í•¨
         List<GameObject> shuffled = new List<GameObject>(prefabList);
-        // shuffled ÃÊ±âÈ­ - ¸Ş¼­µå(¾Ë°í¸®Áò)_'Fisher-Yates Shuffle'
+        // shuffled ì´ˆê¸°í™” - ë©”ì„œë“œ(ì•Œê³ ë¦¬ì¦˜)_'Fisher-Yates Shuffle'
         shuffled = FisherYatesShuffleUnity(shuffled);
 
-        // ½ÇÁ¦ ¹èÄ¡ÇÒ °³¼ö »ı¼º ¹× ÃÊ±âÈ­ - ÃÖ¼Ú°ª_¹èÄ¡ÇÒ °³¼ö ~ shuffled °³¼ö   <<-- ¹èÄ¡ÇÒ °³¼öº¸´Ù shuffled °ªÀÌ ´õ ÀÛÀ» ¼ö ÀÖ±â¿¡ ÃÖ¼Ú°ª ¿¬»ê ÈÄ »ç¿ë
+        // ì‹¤ì œ ë°°ì¹˜í•  ê°œìˆ˜ ìƒì„± ë° ì´ˆê¸°í™” - ìµœì†Ÿê°’_ë°°ì¹˜í•  ê°œìˆ˜ ~ shuffled ê°œìˆ˜   <<-- ë°°ì¹˜í•  ê°œìˆ˜ë³´ë‹¤ shuffled ê°’ì´ ë” ì‘ì„ ìˆ˜ ìˆê¸°ì— ìµœì†Ÿê°’ ì—°ì‚° í›„ ì‚¬ìš©
         int count = Mathf.Min(spawnCount, shuffled.Count);
-        // ¸¶Áö¸· À§Ä¡ °ª_X »ı¼º ¹× ÃÊ±âÈ­
+        // ë§ˆì§€ë§‰ ìœ„ì¹˜ ê°’_X ìƒì„± ë° ì´ˆê¸°í™”
         float lastPosX = 0f;
 
-        // ¹İº¹¹® - ½ÇÁ¦ ¹èÄ¡ÇÒ °³¼ö¸¸Å­
+        // ë°˜ë³µë¬¸ - ì‹¤ì œ ë°°ì¹˜í•  ê°œìˆ˜ë§Œí¼
         for (int i = 0; i < count; i++)
         {
-            // ¸¶Áö¸· À§Ä¡ °ª_X ÃÊ±âÈ­ - ¹èÄ¡ °£°İ + i * ¹èÄ¡ °£°İ   <<-- ÃÖÃÊ ½ÃÀÛÇÏ´Â À§Ä¡¿¡´Â MapStart°¡ ¹èÄ¡µÇ±â¿¡ 2¹ø Â° À§Ä¡ºÎÅÍ ¹èÄ¡
+            // ë§ˆì§€ë§‰ ìœ„ì¹˜ ê°’_X ì´ˆê¸°í™” - ë°°ì¹˜ ê°„ê²© + i * ë°°ì¹˜ ê°„ê²©   <<-- ìµœì´ˆ ì‹œì‘í•˜ëŠ” ìœ„ì¹˜ì—ëŠ” MapStartê°€ ë°°ì¹˜ë˜ê¸°ì— 2ë²ˆ ì§¸ ìœ„ì¹˜ë¶€í„° ë°°ì¹˜
             lastPosX = positionX + i * positionX;
 
-            // À§Ä¡ °ª Á¤ÀÇ - MapRanÀÇ À§Ä¡ °ª ±â¹İ, X °ª¿¡¸¸ ¸¶Áö¸· À§Ä¡ °ª_X ¿¬»ê
+            // ìœ„ì¹˜ ê°’ ì •ì˜ - MapRanì˜ ìœ„ì¹˜ ê°’ ê¸°ë°˜, X ê°’ì—ë§Œ ë§ˆì§€ë§‰ ìœ„ì¹˜ ê°’_X ì—°ì‚°
             Vector3 pos1 = new Vector3
                 (
                 mapRanParent.transform.position.x + lastPosX,
                 mapRanParent.transform.position.y,
                 mapRanParent.transform.position.z
                 );
-            // GameObject_obj1 »ı¼º - shuffled ³» i¹øÂ° °ª, À§Ä¡ °ª, È¸Àü °ª(±âº»), obj1À» »ı¼º¿¡ Âü°íÇÒ À§Ä¡
+            // GameObject_obj1 ìƒì„± - shuffled ë‚´ ië²ˆì§¸ ê°’, ìœ„ì¹˜ ê°’, íšŒì „ ê°’(ê¸°ë³¸), obj1ì„ ìƒì„±ì— ì°¸ê³ í•  ìœ„ì¹˜
             GameObject obj1 = Instantiate(shuffled[i], pos1, Quaternion.identity, mapRanParent);
-            // obj1 ÀÌ¸§ ÃÊ±âÈ­
+            // obj1 ì´ë¦„ ì´ˆê¸°í™”
             obj1.name = $"Clone_{shuffled[i].name}_{i + 1}";
         }
 
-        // µµÂøÁöÁ¡ À§Ä¡ °ª Á¤ÀÇ - MapRanÀÇ À§Ä¡ °ª ±â¹İ, X °ª¿¡¸¸ ¸¶Áö¸· À§Ä¡ °ª_X + ¹èÄ¡ °£°İ ¿¬»ê   <<-- ½ÇÁ¦ ¹èÄ¡µÈ °³¼ö ´ÙÀ½ À§Ä¡¿¡ »ı¼ºÇÏ±â À§ÇÑ ¿¬»ê
+        // ë„ì°©ì§€ì  ìœ„ì¹˜ ê°’ ì •ì˜ - MapRanì˜ ìœ„ì¹˜ ê°’ ê¸°ë°˜, X ê°’ì—ë§Œ ë§ˆì§€ë§‰ ìœ„ì¹˜ ê°’_X + ë°°ì¹˜ ê°„ê²© ì—°ì‚°   <<-- ì‹¤ì œ ë°°ì¹˜ëœ ê°œìˆ˜ ë‹¤ìŒ ìœ„ì¹˜ì— ìƒì„±í•˜ê¸° ìœ„í•œ ì—°ì‚°
         Vector3 finishPos = new Vector3
             (
             mapRanParent.transform.position.x + lastPosX + positionX, 
             mapRanParent.transform.position.y,
             mapRanParent.transform.position.z
             );
-        // GameObject_obj2 »ı¼º - mapFinish, µµÂøÁöÁ¡ À§Ä¡ °ª, È¸Àü °ª(±âº»), obj2¸¦ »ı¼º¿¡ Âü°íÇÒ À§Ä¡
+        // GameObject_obj2 ìƒì„± - mapFinish, ë„ì°©ì§€ì  ìœ„ì¹˜ ê°’, íšŒì „ ê°’(ê¸°ë³¸), obj2ë¥¼ ìƒì„±ì— ì°¸ê³ í•  ìœ„ì¹˜
         GameObject obj2 = Instantiate(mapFinish, finishPos, Quaternion.identity, mapRanParent);
-        // obj2 ÀÌ¸§ ÃÊ±âÈ­
+        // obj2 ì´ë¦„ ì´ˆê¸°í™”
         obj2.name = $"Clone_{mapFinish.name}";
     }
 }
