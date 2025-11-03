@@ -11,6 +11,7 @@ public class GemObject : InteractObject
             Destroy(gameObject);
 
             //보석 수집 효과 적용
+            GameObject.FindObjectOfType<StageInfo>().stageGemNum--;
         }
     }
 }

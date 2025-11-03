@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 6830122796579369507}
   - component: {fileID: 1910534889929805294}
   - component: {fileID: 3521264809454194594}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 2075904357472534639}
   - component: {fileID: 4915057809447464943}
   - component: {fileID: 4236527394998485366}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Ruler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   - component: {fileID: 3022099275197025049}
   - component: {fileID: 1176895483160914181}
   - component: {fileID: 8644421645378266891}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DeadZone(Blue)
   m_TagString: Fire
   m_Icon: {fileID: 0}
@@ -1754,7 +1754,7 @@ GameObject:
   - component: {fileID: 6714723489844322533}
   - component: {fileID: 6045998912925262148}
   - component: {fileID: 5416939064160266152}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2487,7 +2487,7 @@ GameObject:
   - component: {fileID: 3601221922484937122}
   - component: {fileID: 8939133366746882759}
   - component: {fileID: 2140116991917839989}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: CheckpointSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2654,7 +2654,7 @@ GameObject:
   - component: {fileID: 191374679028201709}
   - component: {fileID: 1018094332012338946}
   - component: {fileID: 2506102837757300325}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DeadZone(Red)
   m_TagString: Water
   m_Icon: {fileID: 0}

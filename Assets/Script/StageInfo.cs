@@ -7,6 +7,7 @@ public class StageInfo : MonoBehaviour
     public int stageLevel;
     public float stageClearTime;
     public Sprite stageBoxsprite;
+    public int stageGemNum;
     public Sprite[] stageSlideSprite = new Sprite[3];
 
 }
