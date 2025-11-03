@@ -29,9 +29,9 @@ public class StageClearUIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OnClickNextStage(string nextStage)
+    public void OnClickNext()
     {
-        SceneManager.LoadScene(nextStage);
+        GameManager.Instance.OnClickNextStage();
     }
 
     public void OnClickStageSelect()

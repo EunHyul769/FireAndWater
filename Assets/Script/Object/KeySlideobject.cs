@@ -21,7 +21,8 @@ public class KeySlideobject : InteractObject
     {
         if(collision.gameObject.CompareTag("Player_Fire") || collision.gameObject.CompareTag("Player_Water"))
         {
-            if(collision.gameObject.GetComponent<PlayerController>().heldKey != null)
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (collision.gameObject.GetComponent<PlayerController>().heldKey != null)
             {
                 Debug.Log("held key");
                 if (PlayerCheck(collision.gameObject))
@@ -32,7 +33,8 @@ public class KeySlideobject : InteractObject
                         Debug.Log("Key Element checked");
                         Interact();
                     }
-                    // + 사용한 키 삭제 처리
+                    if (player == null || player.heldKey == null) return;
+                    UseKey(player);
                 }
             } 
         }     
@@ -96,5 +98,22 @@ public class KeySlideobject : InteractObject
         {
             return false;
         }
+    }
+
+    private void UseKey(PlayerController player)
+    {
+        if (player == null || player.heldKey == null)
+        {
+            Debug.LogWarning("UseKey() called, but no key found!");
+            return;
+        }
+
+        Debug.Log($"{player.playerType} used {player.heldKey.keyType} key!");
+
+        // 열쇠 오브젝트 삭제
+        Destroy(player.heldKey.gameObject);
+
+        
+        player.heldKey = null;
     }
 }
