@@ -34,4 +34,9 @@ public class AnimationHandler : MonoBehaviour
     {
         animator.SetBool(IsDead, true);
     }
+
+    public void Alive(Vector2 obj) 
+    {
+        animator.SetBool(IsDead, false);
+    }
 }

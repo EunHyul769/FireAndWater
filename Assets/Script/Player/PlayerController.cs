@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
     public string playerType = "Fire"; // "Fire" or "Water"
-    public float moveSpeed = 5f;
-    public float jumpForce = 7f;
+    public float moveSpeed = 4f;
+    public float jumpForce = 14f;
     public KeyCode leftKey;
     public KeyCode rightKey;
     public KeyCode downKey;
@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
 
     // 레버 근처 감지용
     private LeverObject nearbyLever;
+
+    // 세이브 포인트용
+    private Vector3 respawnPoint;
+    private bool SavePoint = false;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -59,7 +64,7 @@ public class PlayerController : MonoBehaviour
         if (nearbyLever != null && Input.GetKeyDown(interactKey))
         {
             nearbyLever.SetPlayerInRange(this);
-            
+
         }
 
         // 키 관련 기능
@@ -186,8 +191,50 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        isDead = true;
+
         Debug.Log($"{playerType} Player died!");
+
+        // 저장된 세이브포인트가 있으면 부활
+        if (SavePoint)
+        {
+            StartCoroutine(Respawn());
+        }
+        else
+        {
+            // 저장된 지점이 없을 때는 완전히 사망 처리
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void UpdateSavePoint(Vector3 newSavePoint)
+    {
+        respawnPoint = newSavePoint;
+        SavePoint = true;
+        Debug.Log($"{playerType} save point updated: {respawnPoint}");
+    }
+
+    private IEnumerator Respawn()
+    {
+        // 게임오브젝트 비활성화 X
+        rb.simulated = false; // 물리 정지
+        GetComponent<Collider2D>().enabled = false; // 충돌 정지
+        moveSpeed = 0; // 움직임 정지
+
         animationHandler?.Dead(rb.velocity);
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.5f); // 부활 대기
+
+        // 부활 처리
+        transform.position = respawnPoint;
+        rb.velocity = Vector2.zero;
+        isDead = false;
+        animationHandler?.Alive(rb.velocity);
+
+        rb.simulated = true;
+        GetComponent<Collider2D>().enabled = true;
+        moveSpeed = 4f; // 원래 속도로 복귀
+        jumpForce = 14f; // 원래 점프로 복귀
+
+        Debug.Log($"{playerType} respawned at {respawnPoint}");
     }
 }
