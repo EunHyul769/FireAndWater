@@ -1323,9 +1323,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList:
   - {fileID: 2295436716691849706, guid: 934231201716f294d9ea65c793552fec, type: 3}
+  - {fileID: 2295436716691849706, guid: 08572f64b9d9a3c4db2932fe89fc9624, type: 3}
+  - {fileID: 2295436716691849706, guid: 4955f6fd34f3d0546b648bce5af43dd9, type: 3}
+  - {fileID: 2295436716691849706, guid: 5451866a556d8924eb8109ff3375201f, type: 3}
+  - {fileID: 2295436716691849706, guid: 1590ee13033e67d469fb378f585d7ac8, type: 3}
   mapFinish: {fileID: 2807654627963235922, guid: 4a9b69578299be84bbacf2af64cd1616, type: 3}
   mapRanParent: {fileID: 1106731290}
-  spawnCount: 3
+  spawnCount: 5
   positionX: 50
 --- !u!1001 &760617501
 PrefabInstance:
@@ -1409,7 +1413,7 @@ GameObject:
   - component: {fileID: 924196455}
   - component: {fileID: 924196454}
   - component: {fileID: 924196453}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1927,7 +1931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1357352329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2158,7 +2162,7 @@ GameObject:
   - component: {fileID: 1382200705}
   - component: {fileID: 1382200704}
   - component: {fileID: 1382200703}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3481,7 +3485,7 @@ GameObject:
   - component: {fileID: 2120847476}
   - component: {fileID: 2120847475}
   - component: {fileID: 2120847474}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Ruler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
