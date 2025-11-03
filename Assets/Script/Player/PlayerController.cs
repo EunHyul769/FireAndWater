@@ -232,8 +232,8 @@ public class PlayerController : MonoBehaviour
 
         rb.simulated = true;
         GetComponent<Collider2D>().enabled = true;
-        moveSpeed = 4f; // 원래 속도로 복귀
-        jumpForce = 14f; // 원래 점프로 복귀
+        moveSpeed = 10f; // 원래 속도로 복귀
+        jumpForce = 16f; // 원래 점프로 복귀
 
         Debug.Log($"{playerType} respawned at {respawnPoint}");
     }
