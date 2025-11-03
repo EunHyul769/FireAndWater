@@ -1,20 +1,20 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SavePoint : MonoBehaviour
 {
     public string flagType = "Fire"; // "Fire" or "Water"
-    private bool isActivated = false; // ±ê¹ßÀÌ È°¼ºÈ­µÇ¾ú´ÂÁö Ã¼Å©
+    private bool isActivated = false; // ê¹ƒë°œì´ í™œì„±í™”ë˜ì—ˆëŠ”ì§€ ì²´í¬
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ÇÃ·¹ÀÌ¾î¸¸ ¹İÀÀ
+        // í”Œë ˆì´ì–´ë§Œ ë°˜ì‘
         if (collision.CompareTag("Player_Fire") || collision.CompareTag("Player_Water"))
         {
             PlayerController player = collision.GetComponent<PlayerController>();
 
-            // ÇØ´ç ÇÃ·¹ÀÌ¾î ¼Ó¼º°ú ±ê¹ß ¼Ó¼ºÀÌ ÀÏÄ¡ÇÏ¸é ÀúÀå
+            // í•´ë‹¹ í”Œë ˆì´ì–´ ì†ì„±ê³¼ ê¹ƒë°œ ì†ì„±ì´ ì¼ì¹˜í•˜ë©´ ì €ì¥
             if (player != null && player.playerType == flagType)
             {
                 player.UpdateSavePoint(transform.position);
@@ -24,7 +24,7 @@ public class SavePoint : MonoBehaviour
                     Debug.Log($"{flagType} SavePoint activated at {transform.position}");
                 }
 
-                // ±ê¹ß ¾Ö´Ï¸ŞÀÌ¼Ç or »ö»ó º¯°æ ½Ã ¿©±â¿¡ Ãß°¡
+                // ê¹ƒë°œ ì• ë‹ˆë©”ì´ì…˜ or ìƒ‰ìƒ ë³€ê²½ ì‹œ ì—¬ê¸°ì— ì¶”ê°€
                 // ex) GetComponent<SpriteRenderer>().color = Color.yellow;
             }
         }
