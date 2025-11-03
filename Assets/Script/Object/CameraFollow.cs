@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform targetPlayer;
     [SerializeField] private float offsetX;
+    [SerializeField] private float offsetY;
     void Start()
     {
         
@@ -22,11 +23,15 @@ public class CameraFollow : MonoBehaviour
     {
         if (targetPlayer.position.x - transform.position.x > offsetX)
         {
-            transform.position = new Vector3(targetPlayer.position.x - offsetX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(targetPlayer.position.x - offsetX, targetPlayer.position.y + offsetY, transform.position.z);
         }
-        else if(targetPlayer.position.x - transform.position.x < -offsetX)
+        else if (targetPlayer.position.x - transform.position.x < -offsetX)
         {
-            transform.position = new Vector3(targetPlayer.position.x + offsetX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(targetPlayer.position.x + offsetX, targetPlayer.position.y + offsetY, transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, targetPlayer.position.y + offsetY, transform.position.z);
         }
     }
 }
