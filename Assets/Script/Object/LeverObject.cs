@@ -5,7 +5,7 @@ using UnityEngine;
 public class LeverObject : InteractObject
 {
     private bool isOn = false;
-    private PlayerController nearbyPlayer;
+    [SerializeField] private PlayerController nearbyPlayer;
 
     private SpriteRenderer sr;
     public Sprite pressedSprite;
@@ -19,13 +19,6 @@ public class LeverObject : InteractObject
     private void Update()
     {
         if (nearbyPlayer != null && Input.GetKeyDown(nearbyPlayer.interactKey))
-        {
-            ToggleLever();
-        }
-
-
-        // 디버깅용 상호작용 입력
-        if (Input.GetKeyDown(KeyCode.T))
         {
             ToggleLever();
         }

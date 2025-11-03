@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6188443509235884838}
   m_Layer: 0
   m_Name: EventObject_Lever
-  m_TagString: Untagged
+  m_TagString: Lever
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,5 +223,6 @@ MonoBehaviour:
   IsInteractable: 0
   InteractPlayerNum: 0
   targetSlide: {fileID: 0}
+  nearbyPlayer: {fileID: 0}
   pressedSprite: {fileID: 21300000, guid: d88c8f211368de64dbcf162a01c90bcd, type: 3}
   releasedSprite: {fileID: 21300000, guid: 3a3857d92adea554c88f622bc127f215, type: 3}
