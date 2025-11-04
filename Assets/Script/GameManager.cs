@@ -194,6 +194,8 @@ public class GameManager : MonoBehaviour
         if (clearTime < stageInfo.stageClearTime) num++;
         if (stageInfo.stageGemNum <= 0) num++;
 
-        return num;
+
+        AchievementManager.Instance.AdjustProgress($"stg{stageInfo.stageLevel}", num);
+        return num;       
     }
 }

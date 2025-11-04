@@ -1,0 +1,28 @@
+{
+  "list": [
+    {
+      "id": "stg1",
+      "title": "perfect Start!",
+      "description": "Get 3 medals in the first stage",
+      "goal": 3,
+      "progress": 0,
+      "isUnlocked": false
+    },
+    {
+      "id": "stg2",
+      "title": "Pate a Mate)",
+      "description": "Get 3 medals in the second stage",
+      "goal": 3,
+      "progress": 0,
+      "isUnlocked": false
+    },
+    {
+      "id": "stg3",
+      "title": "Synchronized Swimming",
+      "description": "Get 3 medals in the third stage",
+      "goal": 3,
+      "progress": 0,
+      "isUnlocked": false
+    }   
+  ]
+}
