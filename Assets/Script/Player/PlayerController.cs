@@ -53,6 +53,19 @@ public class PlayerController : MonoBehaviour
             if (p != this)
                 otherPlayer = p;
         }
+
+        // 커스터마이징된 색상 불러오기
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (playerType == "Fire")
+        {
+            Color fireColor = LoadColor("FireColor", new Color(1f, 0.4f, 0.4f));
+            sr.color = fireColor;
+        }
+        else if (playerType == "Water")
+        {
+            Color waterColor = LoadColor("WaterColor", new Color(0.4f, 0.6f, 1f));
+            sr.color = waterColor;
+        }
     }
 
     private void Update()
@@ -202,7 +215,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // 저장된 지점이 없을 때는 완전히 사망 처리
+            RealDie();
             gameObject.SetActive(false);
         }
     }
@@ -236,5 +249,28 @@ public class PlayerController : MonoBehaviour
         jumpForce = 16f; // 원래 점프로 복귀
 
         Debug.Log($"{playerType} respawned at {respawnPoint}");
+    }
+
+    private IEnumerator RealDie()
+    {
+        // 게임오브젝트 비활성화 X
+        rb.simulated = false; // 물리 정지
+        GetComponent<Collider2D>().enabled = false; // 충돌 정지
+        moveSpeed = 0; // 움직임 정지
+
+        animationHandler?.Dead(rb.velocity);
+        yield return new WaitForSeconds(1.5f); // 죽음 모션 대기
+    }
+
+    private Color LoadColor(string key, Color defaultColor)
+    {
+        if (PlayerPrefs.HasKey(key + "R"))
+        {
+            float r = PlayerPrefs.GetFloat(key + "R");
+            float g = PlayerPrefs.GetFloat(key + "G");
+            float b = PlayerPrefs.GetFloat(key + "B");
+            return new Color(r, g, b);
+        }
+        return defaultColor;
     }
 }
