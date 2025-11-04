@@ -1419,10 +1419,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabList:
+  - {fileID: 2295436716691849706, guid: 934231201716f294d9ea65c793552fec, type: 3}
+  - {fileID: 2295436716691849706, guid: 08572f64b9d9a3c4db2932fe89fc9624, type: 3}
+  - {fileID: 2295436716691849706, guid: 4955f6fd34f3d0546b648bce5af43dd9, type: 3}
+  - {fileID: 2295436716691849706, guid: 5451866a556d8924eb8109ff3375201f, type: 3}
+  - {fileID: 2295436716691849706, guid: 1590ee13033e67d469fb378f585d7ac8, type: 3}
+  - {fileID: 2295436716691849706, guid: 4c2068de9cdb0b54b870f4bacdfc93e4, type: 3}
   - {fileID: 2295436716691849706, guid: 6f1aa181c81565044afd4fe2b5fded3f, type: 3}
+  - {fileID: 2295436716691849706, guid: a808c52e4def8bc4c9ca0fd29a364896, type: 3}
+  - {fileID: 2295436716691849706, guid: dc2559fbac37b094eb939fd5f84341e0, type: 3}
+  - {fileID: 2295436716691849706, guid: b8974cdc6e36e1841b6b2d286b03a2ba, type: 3}
+  - {fileID: 2295436716691849706, guid: 8ca3a1e3dde9f5b41b79bb54ba43181d, type: 3}
+  - {fileID: 2295436716691849706, guid: dc04abdb8985aa94c882f566c0c53c79, type: 3}
   mapFinish: {fileID: 2807654627963235922, guid: 4a9b69578299be84bbacf2af64cd1616, type: 3}
   mapRanParent: {fileID: 1106731290}
-  spawnCount: 5
+  spawnCount: 10
   positionX: 50
 --- !u!1001 &760617501
 PrefabInstance:
