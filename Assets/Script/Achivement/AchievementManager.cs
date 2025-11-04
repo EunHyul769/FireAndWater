@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using TMPro;
 
 public class AchievementManager : MonoBehaviour
 {
     public static AchievementManager Instance;
 
-    private string savePath; 
+    private string savePath;
     public List<Achievement> achievements = new List<Achievement>();
+    [SerializeField] private GameObject achievePopupPrefab;
 
     private void Awake()
     {
@@ -101,6 +103,9 @@ public class AchievementManager : MonoBehaviour
         Achievement a = achievements.Find(x => x.id == id);
         if (a == null) return;
 
+        // 이미 달성한 도전과제면 팝업x
+        bool alreadyUnlock = a.isUnlocked;
+
         bool unlocked = a.AdjustProgress(amount);
         Debug.Log($"amount adjust, {unlocked}");
 
@@ -111,8 +116,57 @@ public class AchievementManager : MonoBehaviour
 
         SaveAchievements();
 
+        if (!alreadyUnlock)
+        {
+            StartCoroutine(Popup(a));
+        }
+
         AchievementUIManager ui = FindObjectOfType<AchievementUIManager>();
         if (ui != null)
             ui.RefreshUI();
+    }
+
+    private IEnumerator Popup(Achievement achievement)
+    {
+        GameObject obj = Instantiate(achievePopupPrefab);
+        AchievementPopup aPop = obj.GetComponent<AchievementPopup>();
+        obj.transform.Find("Text").GetComponent<TextMeshPro>().text = achievement.title + "\n" + achievement.progress + " / " + achievement.goal;
+
+        float time = 0f;
+        while (time < aPop.moveTime)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / aPop.moveTime);   // Lerp 범위에 맞추기 위한 정규화
+
+            try
+            {
+                obj.transform.position = Vector3.Lerp(aPop.startPos, aPop.startPos + aPop.moveVector, t);
+            }
+            catch
+            {
+                break;
+            }
+            
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        time = 0f;
+        while (time < aPop.moveTime)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / aPop.moveTime);   // Lerp 범위에 맞추기 위한 정규화
+
+            try
+            {
+                obj.transform.position = Vector3.Lerp(aPop.startPos + aPop.moveVector, aPop.startPos, t);
+            }
+            catch
+            {
+                break;
+            }            
+            yield return null;
+        }
     }
 }
