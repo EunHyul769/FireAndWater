@@ -30,6 +30,9 @@ public class TitleUIManager : MonoBehaviour
 
     public void OnClickHidden()
     {
+        if (BGMManager.Instance != null)
+            BGMManager.Instance.Stop(1.0f); // BGM 1초간 페이드아웃
+
         SceneManager.LoadScene("HiddenIntroScene");
     }
 
