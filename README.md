@@ -26,39 +26,51 @@
 ## 기능 설명 
 <br>
 
-### 점프와 슬라이드 
+### 플레이어 이동과 점프
+
+각 플레이어는 키보드 w,a,d 와 ▲,◄,► 입력으로 이동 가능하도록 인스펙터에서 설정
+플레이어는 ground 레이어인 콜라이더에 위에서만 점프가 가능하도록 하여 중복해서 일어나지 않도록 함 
 
 <br>
 
-        void Jump()
+    private void Move()
     {
-    _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpForce);
-    jumpCount++;
-    isGrounded = false;
+        float moveDir = 0;
+        if (Input.GetKey(leftKey)) moveDir = -1;
+        if (Input.GetKey(rightKey)) moveDir = 1;
 
-    sfxController?.PlayJumpSFX();
-    }
-----------------------------------------------------------------------
-    void Slide()
-    {
-    if (!isSlide && isGrounded)
-    {
-        isSlide = true;
-        animator.SetTrigger("isSlide");
-        playerCollider.size = sliderColliderSize;
-        playerCollider.offset = sliderColliderOffset;
+        rb.velocity = new Vector2(moveDir * moveSpeed, rb.velocity.y);
 
-        sfxController?.PlaySlideSFX();
+        if (moveDir > 0 && !facingRight)
+            Flip(true);
+        else if (moveDir < 0 && facingRight)
+            Flip(false);
+
+        animationHandler?.Move(rb.velocity);
     }
 
+    private void Flip(bool faceRight)
+    {
+        facingRight = faceRight;
+        transform.rotation = faceRight ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+    }
+
+    private void Jump()
+    {
+        bool wasGrounded = isGrounded;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+
+        if (isGrounded && Input.GetKeyDown(jumpKey))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animationHandler?.Jump(rb.velocity);
+        }
+
+        if (!wasGrounded && isGrounded)
+            animationHandler?.JumpEnd();
     }
 
 <br>
-
-|점프|슬라이드|
-|:---:|:---:|
-|![Jump](https://github.com/user-attachments/assets/989d2c2f-3081-4914-a822-58cd614ea2df)| ![Slide](https://github.com/user-attachments/assets/0da77af1-f1c0-42b6-a9a4-b249c314da1e) |
-
 
 ### 피격 & 무적 상태
 
@@ -329,16 +341,3 @@ public abstract class BaseUIButtonController : MonoBehaviour
         buttonListeners.Clear();
     }
 }
-```
-
-----
-
-## ⚙️ 개발 환경 및 기술 스택
-- **엔진** : Unity 2022.3.62f2
-- **언어** : C#
-- **버전 관리** : Git / GitHub
-- **협업 툴** : ZEP / Slack
-- **플랫폼** : PC,Mobile
-
-  <br>
-  <br>
