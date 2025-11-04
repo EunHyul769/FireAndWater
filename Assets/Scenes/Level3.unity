@@ -5807,53 +5807,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5247525540661438274, guid: 9fb9d1d6df87c97428bfbe24fad7ca5e, type: 3}
   m_PrefabInstance: {fileID: 1677214826}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1712567570
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1712567572}
-  - component: {fileID: 1712567571}
-  m_Layer: 0
-  m_Name: StageBGMSet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1712567571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712567570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fba56189c31cc46896097e26715dba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stageBGM: {fileID: 8300000, guid: 04cac9a81dd256d46a5709ef1048c62d, type: 3}
-  fadeTime: 1.5
-  volume: 0.8
---- !u!4 &1712567572
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712567570}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.58274543, y: 0.36023855, z: 0.03184658}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723998754
 GameObject:
   m_ObjectHideFlags: 0
@@ -6823,4 +6776,3 @@ SceneRoots:
   - {fileID: 1396815862}
   - {fileID: 855748694}
   - {fileID: 1197230793}
-  - {fileID: 1712567572}
