@@ -71,8 +71,6 @@ PlayerController.cs
             animationHandler?.JumpEnd();
     }
 
-<br>
-
 ### 상호작용 오브젝트 관리
 
  플레이어가 상호작용 가능한 오브젝트(버튼, 레버, 수집 아이템 등)은 Interativeobject를 상속 받도록 구성<br>
