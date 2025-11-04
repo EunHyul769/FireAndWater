@@ -13,6 +13,8 @@ TagManager:
   - Lever
   - Fire
   - Water
+  - Start
+  - Goal
   layers:
   - Default
   - TransparentFX

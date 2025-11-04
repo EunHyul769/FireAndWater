@@ -36,6 +36,11 @@ public class TitleUIManager : MonoBehaviour
         SceneManager.LoadScene("HiddenIntroScene");
     }
 
+    public void OnClickCustom()
+    {
+        SceneManager.LoadScene("PlayerCustom");
+    }
+
     public void OnClickQuit()
     {
         Application.Quit();
