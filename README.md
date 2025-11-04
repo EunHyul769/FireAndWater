@@ -73,67 +73,47 @@ PlayerController.cs
 
 <br>
 
-### 피격 & 무적 상태
+### 상호작용 오브젝트 관리
 
- - 플레이어가 장애물에 부딪히면 Hp가 감소하고 일시적으로 무적상태가 됩니다.
+ 플레이어가 상호작용 가능한 오브젝트(버튼, 레버, 수집 아이템 등)은 Interativeobject를 상속 받도록 구성<br>
+ 트리거 Enter/Exit 시 충돌 중인 플레이어 수를 확인하여 상호작용 결정<br>
  
    <br>
-```
-    public void TakeDamage(int damage)
+
+    public virtual void Interact()
     {
-    if (isInvincible || isHit)
+    }
+    public virtual void InteractOut()
     {
-        Debug.Log("무적");
-        return;
     }
-
-
-    currentHp -= damage;
-    if (currentHp <= 0)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        currentHp = 0;
-        Die();
-        return;
+        InteractPlayerNum++;
+        Debug.Log($"{this.name} nearby {InteractPlayerNum}OB");
 
+        if(Type == ObjectType.Buton)
+        {
+            Interact();
+        }
+        if(Type == ObjectType.Gate)
+        {
+            Interact();
+        }
     }
-
-
-    if (invCoroutine != null)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
-        StopCoroutine(invCoroutine);
-
+        InteractPlayerNum--;
+        if (InteractPlayerNum <= 0 && Type == ObjectType.Buton)
+        {
+            InteractOut();
+        }
+        if (Type == ObjectType.Gate)
+        {
+            InteractOut();
+        }
     }
-
-    if (damage > tickDamage) // 틱뎀에 의한 무적발생 방지
-    {
-        invCoroutine = StartCoroutine(OnHitRoutine());
-    }
-
-    }
-```
------
-```
-IEnumerator OnHitRoutine()
-    {
-    isHit = true;
-    isInvincible = true;
-    sfxController?.PlayHitSFX();
-    animator.SetBool("isHit", true);
-    yield return new WaitForSeconds(hitAnimeDuration);
-    animator.SetBool("isHit", false);
-    isHit = false;
-    yield return new WaitForSeconds(invincibleDuration - hitAnimeDuration); // anim 시간 이후 남은 무적시간 지속
-    isInvincible = false;
-    }
-```
-
-|충돌 모션|
-|:---:|
-|![Bump](https://github.com/user-attachments/assets/9bdb6c98-4014-4bd1-bfb2-1786075a8303)|
-
+	
 <br>
-
-    
 ### 사망 처리 & 결과창 이동
 - Hp가 0이 되면 사망하며 결과창으로 이동합니다.
 
