@@ -76,7 +76,7 @@ PlayerController.cs
  플레이어가 상호작용 가능한 오브젝트(버튼, 레버, 수집 아이템 등)은 Interativeobject를 상속 받도록 구성<br>
  트리거 Enter/Exit 시 충돌 중인 플레이어 수를 확인하여 상호작용 결정<br>
  
-   <br>
+<br>
 
     public virtual void Interact()
     {
@@ -112,25 +112,38 @@ PlayerController.cs
     }
 	
 <br>
-### 사망 처리 & 결과창 이동
-- Hp가 0이 되면 사망하며 결과창으로 이동합니다.
 
+### 스테이지 클리어 UI
+스테이지 씬 로드 시 MainUI 씬 또한 로드<br>
+스테이지 클리어 시 소요 시간, 점수가 포함된 UI 표시(활성화)<br>
+
+GameManager.cs
 <br>
 
 ```
-     public void Die()
+    public void StageClear()
     {
-     if (isDie) return;
-     isDie = true;
-     currentHp = 0;
-     _rigidbody2D.velocity = Vector2.zero;
+        Debug.Log($"{currentScene.name} clear!!!");
 
-     Debug.Log("Player Die");
-     animator.SetTrigger("isDie");
-     _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpForce * 1.5f);
-     //애니메이션 추가 예정? 혹은 바로 결과창?
-     sfxController?.PlayDieSFX();
-     GameManager.instance.EndGame();
+        //타이머 정지, 클탐 계산
+        TimeManager.Instance.StopTimer();
+        float clearTime = TimeManager.Instance.GetElapsedTime();
+        PlayerPrefs.SetFloat("ClearTime", clearTime);
+
+        //현재 스테이지 이름 기록
+        lastStageName = SceneManager.GetActiveScene().name;
+
+        //스테이지클리어ui매니저 찾아서 표시
+        StageClearUIManager clearUI = FindObjectOfType<StageClearUIManager>();
+        if (clearUI != null)
+        {
+            clearUI.ShowStageClearUI(clearTime);
+        }
+        else
+        {
+            Debug.LogWarning("StageClearUIManager를 찾을 수 없습니다. MainUI 씬이 로드되어 있는지 확인하세요.");
+        }
+
     }
 ```
 |사망 & 결과창 전환|
