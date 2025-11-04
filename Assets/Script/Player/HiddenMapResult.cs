@@ -1,15 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HiddenMapResult : MonoBehaviour
 {
-    [Header("°á°ú Ç¥½Ã UI")]
-    public GameObject resultPanel;      // °á°úÃ¢ (Canvas ¾È¿¡)
-    public Text resultText;             // ½ÂÀÚ ÅØ½ºÆ®
+    [Header("ê²°ê³¼ í‘œì‹œ UI")]
+    public GameObject resultPanel;      // ê²°ê³¼ì°½ (Canvas ì•ˆì—)
+    public Text resultText;             // ìŠ¹ì í…ìŠ¤íŠ¸
 
-    private bool gameEnded = false;     // ÀÌ¹Ì ³¡³µ´ÂÁö ¿©ºÎ
+    private bool gameEnded = false;     // ì´ë¯¸ ëë‚¬ëŠ”ì§€ ì—¬ë¶€
 
     TimeManager timeManager;
 
@@ -21,23 +21,23 @@ public class HiddenMapResult : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ÀÌ¹Ì Á¾·áµÈ °ÔÀÓÀÌ¸é ¹«½Ã
+        // ì´ë¯¸ ì¢…ë£Œëœ ê²Œì„ì´ë©´ ë¬´ì‹œ
         if (gameEnded) return;
 
         timeManager.StopTimer();
 
-        // Fire ¶Ç´Â Water ÇÃ·¹ÀÌ¾î¸¸ ¹İÀÀ
+        // Fire ë˜ëŠ” Water í”Œë ˆì´ì–´ë§Œ ë°˜ì‘
         if (collision.CompareTag("Player_Fire") || collision.CompareTag("Player_Water"))
         {
             gameEnded = true;
 
-            // ½ÂÀÚ ÆÇÁ¤
+            // ìŠ¹ì íŒì •
             string winner = collision.CompareTag("Player_Fire") ? "Fire" : "Water";
 
-            // °á°ú Ãâ·Â
+            // ê²°ê³¼ ì¶œë ¥
             ShowResult(winner);
 
-            // ÀÌµ¿ Á¤Áö Ã³¸® (µÑ ´Ù ¸ØÃß°Ô)
+            // ì´ë™ ì •ì§€ ì²˜ë¦¬ (ë‘˜ ë‹¤ ë©ˆì¶”ê²Œ)
             StopAllPlayers();
         }
     }
@@ -63,7 +63,7 @@ public class HiddenMapResult : MonoBehaviour
             if (rb != null)
                 rb.velocity = Vector2.zero;
 
-            // ¿òÁ÷ÀÓ ¸·±â
+            // ì›€ì§ì„ ë§‰ê¸°
             p.enabled = false;
         }
     }
