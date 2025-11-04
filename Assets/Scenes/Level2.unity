@@ -132,15 +132,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1529014565890753896, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_Name
-      value: EventObject_Gem (1)
+      value: EventObject_Gem_Fire (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.52
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.55
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -948,7 +948,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1338,9 +1338,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 32b23f9b12a105740b03b5f5611f28dd, type: 2}
   - m_RefCount: 36
     m_Data: {fileID: 11400000, guid: 6949b84c62585f047b3df3aed47ed55b, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: e7ca79cc58e58d44b96a34012c9a5d1f, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: e86ec3a273481154bbfd70ba70a67c2e, type: 3}
   - m_RefCount: 1
@@ -1351,6 +1353,8 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: f85e405e897f6984a804bad141e2a46a, type: 3}
   - m_RefCount: 36
     m_Data: {fileID: 21300000, guid: fcf913c8dc8c6d941a7a0b3e6b54a7a2, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: e7ca79cc58e58d44b96a34012c9a5d1f, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 74
     m_Data:
@@ -1548,7 +1552,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 474ee6be1951aa342b4139a369d487f2, type: 3}
     - target: {fileID: 1529014565890753896, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_Name
-      value: EventObject_Gem (2)
+      value: EventObject_Gem_Water (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4104222844871666112, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: Element
@@ -1556,11 +1560,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.49
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.51
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1621,7 +1625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &526678537
 Transform:
   m_ObjectHideFlags: 0
@@ -2926,7 +2930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Interact with 'spacebar' or '0'
+  m_text: Interact with 'E' or '0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3468,7 +3472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1023922427
 Transform:
   m_ObjectHideFlags: 0
@@ -4154,7 +4158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1401035964
 Transform:
   m_ObjectHideFlags: 0
@@ -4454,7 +4458,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 474ee6be1951aa342b4139a369d487f2, type: 3}
     - target: {fileID: 1529014565890753896, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_Name
-      value: EventObject_Gem (3)
+      value: EventObject_Gem_Water (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4104222844871666112, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: Element
@@ -4462,7 +4466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.51
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4768,7 +4772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1838785505
 Transform:
   m_ObjectHideFlags: 0
@@ -4799,15 +4803,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1529014565890753896, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_Name
-      value: EventObject_Gem
+      value: EventObject_Gem_Fire (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.51
+      value: -11.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.41
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775349280828855830, guid: 3c8ed3d10cea60448915624fc43a55bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4868,7 +4872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1968367572
 Transform:
   m_ObjectHideFlags: 0
@@ -4942,7 +4946,7 @@ Tilemap:
   m_GameObject: {fileID: 1968367571}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 6, y: -9, z: 0}
+  - first: {x: 7, y: -9, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 3
@@ -5228,8 +5232,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1800057461}
+  - {fileID: 390336062}
+  - {fileID: 1767003787}
   - {fileID: 1388515966}
   - {fileID: 883721900}
   - {fileID: 1064900091}
-  - {fileID: 390336062}
-  - {fileID: 1767003787}
