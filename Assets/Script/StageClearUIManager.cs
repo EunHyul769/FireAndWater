@@ -52,23 +52,6 @@ public class StageClearUIManager : MonoBehaviour
     {
 
         int starNum = GameManager.Instance.ScoreCheck();
-
-        // while (starNum - 1 >= 0)
-        // {
-        //     yield return new WaitForSeconds(0.75f);
-
-        //     if (starNum - 1 < 0 || starNum - 1 >= starFronts.Length)
-        //     {
-        //         Debug.LogWarning($"Star index {starNum} out of range (starNum={starNum})");
-        //         yield break;
-        //     }
-
-        //     Debug.Log(starNum);
-        //     starFronts[starNum - 1].SetActive(true);
-
-        //     starNum--;
-
-        // }
         
         for(int i = 0; i < starNum; i++)
         {
