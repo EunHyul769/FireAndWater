@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageBGMSetter : MonoBehaviour
 {
     [SerializeField] private AudioClip stageBGM;
-    [SerializeField] private float fadeTime = 1.5f;
+    [SerializeField] private float fadeTime = 1.0f;
     [SerializeField] private float volume = 0.8f;
 
     void Start()
