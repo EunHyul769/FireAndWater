@@ -1190,6 +1190,7 @@ MonoBehaviour:
   stageLevel: 2
   stageClearTime: 0
   stageBoxsprite: {fileID: 21300000, guid: 99b40adb48b4b1d489258f5d353b0db5, type: 3}
+  stageGemNum: 0
   stageSlideSprite:
   - {fileID: 21300000, guid: 4031c675a0f0d43418c5377c4c07ecfe, type: 3}
   - {fileID: 21300000, guid: f85e405e897f6984a804bad141e2a46a, type: 3}
@@ -1322,11 +1323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabList:
-  - {fileID: 2295436716691849706, guid: 934231201716f294d9ea65c793552fec, type: 3}
-  - {fileID: 2295436716691849706, guid: 08572f64b9d9a3c4db2932fe89fc9624, type: 3}
-  - {fileID: 2295436716691849706, guid: 4955f6fd34f3d0546b648bce5af43dd9, type: 3}
-  - {fileID: 2295436716691849706, guid: 5451866a556d8924eb8109ff3375201f, type: 3}
-  - {fileID: 2295436716691849706, guid: 1590ee13033e67d469fb378f585d7ac8, type: 3}
+  - {fileID: 2295436716691849706, guid: 6f1aa181c81565044afd4fe2b5fded3f, type: 3}
   mapFinish: {fileID: 2807654627963235922, guid: 4a9b69578299be84bbacf2af64cd1616, type: 3}
   mapRanParent: {fileID: 1106731290}
   spawnCount: 5
