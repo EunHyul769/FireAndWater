@@ -1324,6 +1324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievements: []
+  achievePopupPrefab: {fileID: 3583921245923903493, guid: 3a40227d914910346b49716357f0585a, type: 3}
 --- !u!4 &826701938
 Transform:
   m_ObjectHideFlags: 0
