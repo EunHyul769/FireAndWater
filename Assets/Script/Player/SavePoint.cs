@@ -28,7 +28,7 @@ public class SavePoint : MonoBehaviour
                 // ex) GetComponent<SpriteRenderer>().color = Color.yellow;
             }
 
-            if (CompareTag("Goal"))
+            if (CompareTag("Goal_Fire")||CompareTag("Goal_Water"))
             {
                 GameObject startPoint = GameObject.FindWithTag("Start");
                 if (startPoint != null)
