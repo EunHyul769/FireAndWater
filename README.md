@@ -1,17 +1,16 @@
 #10조 유니티 입문 팀 과제
 ---
-- 쿠키런 형식의 게임 제작
-- x로 점프, c키로 슬라이딩(pc)
-- 버튼 조작 (모바일)
-
-최대한 점수를 많이 얻는 것이 목표인 쿠키런 형식의 게임입니다.<br><br>
+레퍼런스 게임 : Fire&Water
+게임 소개 : 2인 협동 2D 퍼즐 게임으로 기믹을 이용해 목표에 도달하는 게임
 
 ---
-## 💁‍♂️ 프로젝트 팀원 및 역할
-|**팀원**| <img width="48" height="48" alt="백광렬" src="https://github.com/user-attachments/assets/697c47d9-5a48-4442-a758-0348c529998f" /> <br>(팀장)백광렬 |<img width="48" height="48" alt="1-35-63-403" src="https://github.com/user-attachments/assets/c81f119b-0c80-4bef-91c6-94313bb06b36" /> <br>**오정훈**| <img width="48" height="48" alt="강동현" src="https://github.com/user-attachments/assets/4396254c-cbcd-448d-90a1-9e9950aa6701" /> <br>강동현|<img width="48" height="48" alt="이하람" src="https://github.com/user-attachments/assets/4fcca52b-1165-4b1f-a9c8-4aea4d4c4d76" /> <br>이하람 | <img width="48" height="48" alt="임성규" src="https://github.com/user-attachments/assets/af575d83-3d47-4545-9f81-b5c9d39bc287" /> <br>임성규|
-|:---:|:---:|:---:|:---:|:---:|:---:|
-|**역할**|맵 디자인<br> 아이템| 기획, 스테이지<br>시작화면 | 사운드 | 발표, UI |캐릭터(플레이어)|
-<br>
+# 프로젝트 팀원 및 역할분담
+	
+김지훈	중간관리자(전반적 수정&조율)+타이머+씬 백업+bgm
+김경찬	플레이어
+김주원	오브젝트
+김해종	씬 전환+a
+전규태	맵 제작
 
 ---
 
