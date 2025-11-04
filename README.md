@@ -146,13 +146,9 @@ GameManager.cs
 
     }
 ```
-|사망 & 결과창 전환|
-|:---:|
-|![DieResult](https://github.com/user-attachments/assets/c76ea744-dc1f-4c46-84d6-6045c1dd323d)|
-
 <br>
 
-### 배경 무한 스크롤
+### 
 - 머티리얼을 이용해 오프셋x갑3ㅅ 변경으로 무한으로 이어지는것 처럼 보여지는 백그라운드 로직
 
 ```
