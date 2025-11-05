@@ -28,10 +28,12 @@
 
 ### 플레이어 이동과 점프
 
-<img width="256" height="184" alt="화면 캡처 2025-11-05 091815" src="https://github.com/user-attachments/assets/ce6158d4-c794-4960-aafb-403c86edc95d" />
+![제목 없는 디자인 (1)](https://github.com/user-attachments/assets/3d64f3e3-4261-4f04-bf53-918780135a01)
 
 
-각 플레이어는 키보드 w,a,d 와 ▲,◄,► 입력으로 이동 가능하도록 인스펙터에서 설정<br>
+
+각 플레이어는 키보드 W,A,D 와 ▲,◄,► 입력으로 이동 가능하도록 인스펙터에서 설정<br>
+키보드 S, ▼ 입력으로 열쇠(스테이지 진행을 위한 아이템)을 떨어뜨려 전달 가능<br>
 플레이어는 ground 레이어인 콜라이더에 위에서만 점프가 가능하도록 하여 중복해서 일어나지 않도록 함<br>
 
 PlayerController.cs
@@ -74,9 +76,37 @@ PlayerController.cs
             animationHandler?.JumpEnd();
     }
 
+	    private void PickUpKey(KeyItem key)
+    {
+        heldKey = key;
+        key.PickUp(this);
+        Debug.Log($"{playerType} player picked up a {key.keyType} key!");
+    }
+
+    private void DropKey()
+    {
+        heldKey.Drop();
+        heldKey = null;
+        Debug.Log($"{playerType} dropped the key.");
+    }
+
+    private void TryGiveKey()
+    {
+        if (otherPlayer == null || heldKey == null) return;
+
+        float distance = Vector2.Distance(transform.position, otherPlayer.transform.position);
+        if (distance < 2f && otherPlayer.heldKey == null)
+        {
+            heldKey.TransferTo(otherPlayer);
+            heldKey = null;
+            Debug.Log($"{playerType} gave key to {otherPlayer.playerType}!");
+        }
+    }
+
 ### 상호작용 오브젝트 관리
 
-<img width="369" height="216" alt="화면 캡처 2025-11-05 091423" src="https://github.com/user-attachments/assets/a904c2dd-ab12-429b-8307-6a835e263fdd" />
+![제목 없는 디자인 (2)](https://github.com/user-attachments/assets/544904b6-e27d-45ad-8d89-a70fad1e1c44)
+
 
 
  플레이어가 상호작용 가능한 오브젝트(버튼, 레버, 수집 아이템 등)은 Interativeobject를 상속 받도록 구성<br>
@@ -123,7 +153,8 @@ PlayerController.cs
 스테이지 씬 로드 시 MainUI 씬 또한 로드<br>
 스테이지 클리어 시 소요 시간, 점수가 포함된 UI 표시(활성화)<br>
 
-<img width="807" height="455" alt="화면 캡처 2025-11-05 091910" src="https://github.com/user-attachments/assets/6a12a646-1eac-459e-bc64-57a35dc8cf1f" />
+![제목 없는 디자인 (3)](https://github.com/user-attachments/assets/21608d28-25f7-4b4b-abe3-c6d96cd5d45d)
+
 
 
 GameManager.cs
@@ -159,7 +190,8 @@ GameManager.cs
 
 ### 히든 맵 랜덤 구성
 
-<img width="985" height="361" alt="화면 캡처 2025-11-05 093046" src="https://github.com/user-attachments/assets/6845fb10-d1bd-4027-b0b9-90829f364bd5" />
+![제목 없는 디자인 (4)](https://github.com/user-attachments/assets/c2655661-ac92-4e2b-a62e-f82eab763cbe)
+
 
 
 히든 맵의 장애물 구간을 프리팹으로 나누어 관리, 랜덤하게 생성, 조합하여 스테이지 구현<br>
@@ -218,6 +250,28 @@ GameManager.cs
         GameObject obj2 = Instantiate(mapFinish, finishPos, Quaternion.identity, mapRanParent);
         // obj2 이름 초기화
         obj2.name = $"Clone_{mapFinish.name}";
+    }
+
+
+    public static List<T> FisherYatesShuffleUnity<T>(List<T> list)
+    {
+        // 반복문 - 참조한 list 내 값들의 개수 -1 만큼
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            // 임의의 값 생성 및 초기화 - 참조한 list 내 값들의 개수 중 랜덤 값 추출
+            int j = Random.Range(0, i + 1);
+
+            // 캐시 값 생성 및 초기화_참조한 list 내 i번 째 값
+            T temp = list[i];
+            // 참조한 list 내 i번 째 값 초기화_참조한 list 내 추출한 랜덤 값번 째 값
+            list[i] = list[j];
+            // 참조한 list 내 추출한 랜덤 값번 째 값 초기화_캐시 값
+            list[j] = temp;
+        }
+        // 위 반복문에서 추출되지 않은 값은 참조한 list의 마지막에 배치됨
+
+        // 반환 - 참조한 list로
+        return list;
     }
 
 ```
