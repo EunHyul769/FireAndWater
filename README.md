@@ -220,4 +220,26 @@ GameManager.cs
         obj2.name = $"Clone_{mapFinish.name}";
     }
 
+
+    public static List<T> FisherYatesShuffleUnity<T>(List<T> list)
+    {
+        // 반복문 - 참조한 list 내 값들의 개수 -1 만큼
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            // 임의의 값 생성 및 초기화 - 참조한 list 내 값들의 개수 중 랜덤 값 추출
+            int j = Random.Range(0, i + 1);
+
+            // 캐시 값 생성 및 초기화_참조한 list 내 i번 째 값
+            T temp = list[i];
+            // 참조한 list 내 i번 째 값 초기화_참조한 list 내 추출한 랜덤 값번 째 값
+            list[i] = list[j];
+            // 참조한 list 내 추출한 랜덤 값번 째 값 초기화_캐시 값
+            list[j] = temp;
+        }
+        // 위 반복문에서 추출되지 않은 값은 참조한 list의 마지막에 배치됨
+
+        // 반환 - 참조한 list로
+        return list;
+    }
+
 ```
