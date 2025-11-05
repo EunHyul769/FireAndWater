@@ -190,7 +190,8 @@ GameManager.cs
 
 ### 히든 맵 랜덤 구성
 
-<img width="985" height="361" alt="화면 캡처 2025-11-05 093046" src="https://github.com/user-attachments/assets/6845fb10-d1bd-4027-b0b9-90829f364bd5" />
+![제목 없는 디자인 (4)](https://github.com/user-attachments/assets/c2655661-ac92-4e2b-a62e-f82eab763cbe)
+
 
 
 히든 맵의 장애물 구간을 프리팹으로 나누어 관리, 랜덤하게 생성, 조합하여 스테이지 구현<br>
