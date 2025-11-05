@@ -105,7 +105,8 @@ PlayerController.cs
 
 ### 상호작용 오브젝트 관리
 
-<img width="369" height="216" alt="화면 캡처 2025-11-05 091423" src="https://github.com/user-attachments/assets/a904c2dd-ab12-429b-8307-6a835e263fdd" />
+![제목 없는 디자인 (2)](https://github.com/user-attachments/assets/544904b6-e27d-45ad-8d89-a70fad1e1c44)
+
 
 
  플레이어가 상호작용 가능한 오브젝트(버튼, 레버, 수집 아이템 등)은 Interativeobject를 상속 받도록 구성<br>
@@ -152,7 +153,8 @@ PlayerController.cs
 스테이지 씬 로드 시 MainUI 씬 또한 로드<br>
 스테이지 클리어 시 소요 시간, 점수가 포함된 UI 표시(활성화)<br>
 
-<img width="807" height="455" alt="화면 캡처 2025-11-05 091910" src="https://github.com/user-attachments/assets/6a12a646-1eac-459e-bc64-57a35dc8cf1f" />
+![제목 없는 디자인 (3)](https://github.com/user-attachments/assets/21608d28-25f7-4b4b-abe3-c6d96cd5d45d)
+
 
 
 GameManager.cs
