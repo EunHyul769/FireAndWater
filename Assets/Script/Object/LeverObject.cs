@@ -18,7 +18,7 @@ public class LeverObject : InteractObject
 
     private void Update()
     {
-        if (nearbyPlayer != null && Input.GetKeyDown(nearbyPlayer.interactKey))
+        if (nearbyPlayer != null && Input.GetKeyDown(nearbyPlayer.interactKey)|| nearbyPlayer != null && Input.GetKeyDown(nearbyPlayer.interactKey2))
         {
             ToggleLever();
         }

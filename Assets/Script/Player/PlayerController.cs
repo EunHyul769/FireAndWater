@@ -59,12 +59,12 @@ public class PlayerController : MonoBehaviour
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
         if (playerType == "Fire")
         {
-            Color fireColor = LoadColor("FireColor", new Color(1f, 0.4f, 0.4f));
+            Color fireColor = LoadColor("FireColor", new Color(1f, 1f, 1f));
             sr.color = fireColor;
         }
         else if (playerType == "Water")
         {
-            Color waterColor = LoadColor("WaterColor", new Color(0.4f, 0.6f, 1f));
+            Color waterColor = LoadColor("WaterColor", new Color(1f, 1f, 1f));
             sr.color = waterColor;
         }
     }
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         // 레버와 상호작용
-        if (nearbyLever != null && Input.GetKeyDown(interactKey))
+        if (nearbyLever != null && Input.GetKeyDown(interactKey)|| nearbyLever != null && Input.GetKeyDown(interactKey2))
         {
             nearbyLever.SetPlayerInRange(this);
 
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(downKey))
                 DropKey();
 
-            if (Input.GetKeyDown(interactKey))
+            if (Input.GetKeyDown(interactKey)||Input.GetKeyDown(interactKey2))
                 TryGiveKey();
         }
     }
