@@ -28,6 +28,9 @@
 
 ### 플레이어 이동과 점프
 
+<img width="256" height="184" alt="화면 캡처 2025-11-05 091815" src="https://github.com/user-attachments/assets/ce6158d4-c794-4960-aafb-403c86edc95d" />
+
+
 각 플레이어는 키보드 w,a,d 와 ▲,◄,► 입력으로 이동 가능하도록 인스펙터에서 설정<br>
 플레이어는 ground 레이어인 콜라이더에 위에서만 점프가 가능하도록 하여 중복해서 일어나지 않도록 함<br>
 
@@ -73,6 +76,9 @@ PlayerController.cs
 
 ### 상호작용 오브젝트 관리
 
+<img width="369" height="216" alt="화면 캡처 2025-11-05 091423" src="https://github.com/user-attachments/assets/a904c2dd-ab12-429b-8307-6a835e263fdd" />
+
+
  플레이어가 상호작용 가능한 오브젝트(버튼, 레버, 수집 아이템 등)은 Interativeobject를 상속 받도록 구성<br>
  트리거 Enter/Exit 시 충돌 중인 플레이어 수를 확인하여 상호작용 결정<br>
  
@@ -116,6 +122,9 @@ PlayerController.cs
 ### 스테이지 클리어 UI
 스테이지 씬 로드 시 MainUI 씬 또한 로드<br>
 스테이지 클리어 시 소요 시간, 점수가 포함된 UI 표시(활성화)<br>
+
+<img width="807" height="455" alt="화면 캡처 2025-11-05 091910" src="https://github.com/user-attachments/assets/6a12a646-1eac-459e-bc64-57a35dc8cf1f" />
+
 
 GameManager.cs
 <br>
