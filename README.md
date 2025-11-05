@@ -31,7 +31,8 @@
 <img width="256" height="184" alt="화면 캡처 2025-11-05 091815" src="https://github.com/user-attachments/assets/ce6158d4-c794-4960-aafb-403c86edc95d" />
 
 
-각 플레이어는 키보드 w,a,d 와 ▲,◄,► 입력으로 이동 가능하도록 인스펙터에서 설정<br>
+각 플레이어는 키보드 W,A,D 와 ▲,◄,► 입력으로 이동 가능하도록 인스펙터에서 설정<br>
+키보드 S, ▼ 입력으로 열쇠(스테이지 진행을 위한 아이템)을 떨어뜨려 전달 가능<br>
 플레이어는 ground 레이어인 콜라이더에 위에서만 점프가 가능하도록 하여 중복해서 일어나지 않도록 함<br>
 
 PlayerController.cs
@@ -72,6 +73,33 @@ PlayerController.cs
 
         if (!wasGrounded && isGrounded)
             animationHandler?.JumpEnd();
+    }
+
+	    private void PickUpKey(KeyItem key)
+    {
+        heldKey = key;
+        key.PickUp(this);
+        Debug.Log($"{playerType} player picked up a {key.keyType} key!");
+    }
+
+    private void DropKey()
+    {
+        heldKey.Drop();
+        heldKey = null;
+        Debug.Log($"{playerType} dropped the key.");
+    }
+
+    private void TryGiveKey()
+    {
+        if (otherPlayer == null || heldKey == null) return;
+
+        float distance = Vector2.Distance(transform.position, otherPlayer.transform.position);
+        if (distance < 2f && otherPlayer.heldKey == null)
+        {
+            heldKey.TransferTo(otherPlayer);
+            heldKey = null;
+            Debug.Log($"{playerType} gave key to {otherPlayer.playerType}!");
+        }
     }
 
 ### 상호작용 오브젝트 관리
