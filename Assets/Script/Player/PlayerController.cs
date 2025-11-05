@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode downKey;
     public KeyCode jumpKey;
     public KeyCode interactKey = KeyCode.E;
+    public KeyCode interactKey2 = KeyCode.L;
 
     [Header("Ground Check")]
     public Transform groundCheck;

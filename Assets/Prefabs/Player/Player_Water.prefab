@@ -111,6 +111,7 @@ MonoBehaviour:
   downKey: 274
   jumpKey: 273
   interactKey: 256
+  interactKey2: 47
   groundCheck: {fileID: 2666140713480929667}
   groundLayer:
     serializedVersion: 2
