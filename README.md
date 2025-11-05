@@ -157,7 +157,7 @@ GameManager.cs
 ```
 <br>
 
-### 히든 맵 랜던 구성
+### 히든 맵 랜덤 구성
 
 <img width="985" height="361" alt="화면 캡처 2025-11-05 093046" src="https://github.com/user-attachments/assets/6845fb10-d1bd-4027-b0b9-90829f364bd5" />
 
