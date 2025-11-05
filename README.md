@@ -28,7 +28,8 @@
 
 ### 플레이어 이동과 점프
 
-<img width="256" height="184" alt="화면 캡처 2025-11-05 091815" src="https://github.com/user-attachments/assets/ce6158d4-c794-4960-aafb-403c86edc95d" />
+![제목 없는 디자인 (1)](https://github.com/user-attachments/assets/3d64f3e3-4261-4f04-bf53-918780135a01)
+
 
 
 각 플레이어는 키보드 W,A,D 와 ▲,◄,► 입력으로 이동 가능하도록 인스펙터에서 설정<br>
